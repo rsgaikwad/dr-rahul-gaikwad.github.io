@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Gaikwad Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #fff;
+        color: #333;
+        scroll-behavior: smooth;
+    }
+
+    footer {
+        text-align: center;
+    }
+    
+    /* Navbar */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 10%;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 100;
+    }
+    nav a {
+        text-decoration: none;
+        color: #333;
+        margin-left: 20px;
+        font-weight: 500;
+    }
+    nav .logo {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #6C63FF;
+    }
+
+    /* Hero Section */
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 5%;
+        margin: 25px 5px 20px 0px;
+        gap: 10px;
+    }
+    .hero-text {
+        flex: 0.85;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+    .hero-text p {
+        margin: 15px 0;
+        color: #6c757d;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    .location {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .company {
+        background: #fff;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .company img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+    }
+
+    /* Social icons */
+    .social {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+    .social a img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+    }
+
+    /* Buttons */
+    .buttons {
+        display: flex;
+        gap: 15px;
+    }
+    .buttons a {
+        padding: 12px 24px;
+        margin-top: 10px;
+        background: #6C63FF;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background 0.3s;
+    }
+    .buttons a.secondary {
+        background: #fff;
+        color: #6C63FF;
+        border: 2px solid #6C63FF;
+    }
+    .buttons a:hover {
+        background: #5a54d6;
+    }
+    .buttons a.secondary:hover {
+        background: #6C63FF;
+        color: white;
+    }
+
+    /* Profile Card */
+    .profile-card {
+        flex: 1;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 50px;
+        max-width: 1500px;
+        border: 2px solid #6C63FF;
+    }
+    .profile-card h2 {
+        margin-top: 0;
+        color: #6C63FF;
+        font-size: 1.6rem;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 8px;
+    }
+    .profile-card p {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Awards & Achievements */
+    .awards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .awards-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top:5px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .awards-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+    .awards-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        color: #6C63FF;
+    }
+    .awards-card h3 a {
+        color: #6C63FF;
+        text-decoration: none;
+    }
+    .awards-card p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0 0 6px;
+    }
+    .awards-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    /*Work*/
+    .work-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 20px;
+    }
+    .work-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top:5px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .work-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+    .work-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        color: #07070f;
+    }
+    .work-card h3 a {
+        color: #0c0c10;
+        text-decoration: none;
+    }
+    .work-card p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0 0 6px;
+    }
+    .work-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    .role {
+        margin-top: 10px;
+        padding-left: 15px;
+        border-left: 3px solid #6C63FF;
+    }
+    .role h4 {
+        margin: 0;
+        font-size: 1rem;
+        color: #6C63FF;
+    }
+    .role span {
+        font-size: 0.85rem;
+        color: #888;
+    }
+    .role p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 5px 0 0;
+    }
+
+    /*Education*/
+    .education-container {
+        display: -ms-grid;
+        grid-template-columns: 2;
+        grid
+        gap: 20px;
+    }
+    .education-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .education-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+    .education-card img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+    .education-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #6C63FF;
+    }
+    .education-card p {
+        margin: 2px 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+    .education-card span {
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    /*Skills*/
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .skills-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .skills-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+    .skills-card h3 {
+        margin: 0 0 0px;
+        font-size: 1.1rem;
+        color: #6C63FF;
+    }
+    .skills-card h3 a {
+        color: #6C63FF;
+        text-decoration: none;
+    }
+    .skills-card p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0 0 6px;
+    }
+    .skills-card span {
+        display: block;
+        font-size: 1rem;
+        color: #6C63FF;
+    }
+
+    /*Patents & Publications*/
+    .pp-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 20px;
+    }
+    .pp-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .pp-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+    .pp-card h3 {
+        margin: 0 0 0px;
+        font-size: 1.1rem;
+        color: #6C63FF;
+    }
+    .pp-card h3 a {
+        color: #6C63FF;
+        text-decoration: none;
+    }
+    .pp-card p {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0 0 6px;
+    }
+    .pp-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: #888;
+    }
+    
+    /* Section styling */
+    section {
+        padding: 80px 5%;
+        min-height: 80vh;
+    }
+    section:nth-child(even) {
+        background: #f9f9f9;
+    }
+
+    @media (max-width: 900px) {
+        .hero {
+            flex-direction: column;
+            text-align: center;
+        }
+        .profile-card {
+            max-width: 100%;
+        }
+        .buttons {
+            justify-content: center;
+        }
+        nav {
+            flex-direction: column;
+            gap: 15px;
+        }
+        .location {
+            justify-content: center;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo"></div>
+        <div>
+            <a href="#">About</a>
+            <a href="#work">Work</a>
+            <a href="#awards">Awards</a>
+            <a href="#patent&publication">Patents \ Publications</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+        </div>
+</nav>
+
+<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Dr. Rahul Gaikwad</h1>
+        <p>Solutions Architect at AWS | Field CTO | PhD | MCA | eMBA | MA | 9xAWS | 3xHashiCorp | AI/ML | GenAI | Award Winner | Author | HashiCorp Ambassador | Speaker | Mentor | Trainer | Researcher | YouTuber | Adjunct Professor</p>
+        <div class="company">
+            <img src="amazon_web_services_logo.jpeg" alt="aws logo">
+            <div>
+                Amazon Web Services
+            </div>
+        </div>
+        <div class="location">📍Pune, Maharashtra, India</div>
+        <div class="social">
+            <a href="https://github.com/rsgaikwad"><img src="data:image/png;base64,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" alt="GitHub" style="background:black;padding:5px;"></a>
+            <a href="https://www.linkedin.com/in/dr-rahul-gaikwad/"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="background:#0A66C2;padding:5px;"></a>
+            <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gitlab.svg" alt="GitLab" style="background:#FC6D26;padding:5px;"></a>
+            <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="background:#1877F2;padding:5px;"></a>
+        </div>
+        <div class="buttons">
+            <a href="mailto:your.email@example.com">CONTACT ME</a>
+            <a href="Dr_Rahul_Gaikwad_AWS.pdf" class="secondary" target="_blank" rel="noopener noreferrer">SEE MY RESUME</a>
+        </div>
+    </div>
+    
+    <div class="profile-card">
+        <h2>Profile Summary</h2>
+        <p>I'm a transformational technology leader with 15+ years of experience driving innovation across 𝗖𝗹𝗼𝘂𝗱, 𝗗𝗲𝘃𝗢𝗽𝘀, 𝗔𝗜/𝗠𝗟, 𝗮𝗻𝗱 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗶𝘃𝗲 𝗔𝗜. Holding a 𝗣𝗵𝗗 in Artificial Intelligence for IT Operations (𝗔𝗜𝗢𝗽𝘀) from Savitribai Phule Pune University, along with 𝗠𝗕𝗔, 𝗠𝗖𝗔 and 35+ technical certifications (including 𝟵𝘅 𝗔𝗪𝗦, 𝟯𝘅 𝗛𝗮𝘀𝗵𝗶𝗖𝗼𝗿𝗽, Confluent Kafka, and Stanford ML), I blend deep technical expertise with strategic vision and business acumen.</p>
+        <p>Currently serving as a 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻𝘀 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁 (𝗙𝗶𝗲𝗹𝗱 𝗖𝗧𝗢) at AWS, I lead the migration and modernization of financial services applications and design Agentic AI solutions to streamline insurance claims processes. I help customers build GenAI Chatbots using AWS Bedrock Claude, guide them on cloud cost optimization, and have delivered significant savings. My work includes migrating critical banking applications from other cloud providers to AWS, developing robust security solutions, and mentoring over 50 aspiring technologists through the AWS Technical Field Community program.</p>
+        <p>As a recognized thought leader, I delivered 𝟯𝟬+ 𝘀𝗽𝗲𝗮𝗸𝗶𝗻𝗴 𝘀𝗲𝘀𝘀𝗶𝗼𝗻𝘀 at events like AWS re:Invent, HashiConf, and IIT Bombay, and authored 𝟴 𝗔𝗪𝗦 𝗯𝗹𝗼𝗴𝘀, 𝟭𝟬 𝗽𝗿𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝘃𝗲 𝗴𝘂𝗶𝗱𝗮𝗻𝗰𝗲, and 𝟭𝟱+ code samples. My research includes 8 published papers and patents in IT system alert classification and event log mining.</p>
+    </div>
+</section>
+
+<section id="work">
+    <h2>Work</h2>
+    <div class="work-container"></div>
+        <div class="work-card">
+            <h3><u><a href= "https://www.linkedin.com/company/amazon-web-services/posts/?feedView=all">Amazon Web services</a></u></h3>
+            <div class="role">
+                <h4>Solutions Architect</h4>
+                <span>2024 – Present</span>
+                <p>Driving large-scale cloud migration and modernization initiatives with zero downtime, while optimizing security, reliability, and costs (up to 30% savings). Conducting Well-Architected Reviews, workshops, and trainings on AI/ML, GenAI, and DevOps. Authored blogs, prescriptive guidance, OSS repos, and hands-on workshops reaching 100K+ professionals worldwide. Delivered 25+ global talks and 20+ videos, amplifying AWS adoption and community impact.</p>
+            </div>
+            <div class="role">
+                <h4>Lead Consultant - DevOps</h4>
+                <span>2021 – 2024</span>
+                <p>Spearheaded Chaos Engineering and resiliency initiatives, improving system reliability by 80% and reducing outages by 65%. Led enterprise-scale infrastructure transformation, deploying 100+ servers, 1000+ security rules, and migrating 500+ VMs from VMware to AWS EC2—cutting costs by 40% and reducing carbon footprint by 35%. Optimized AMI creation, observability, and security architectures, while mentoring team members and driving cross-functional architectural discussions.</p>
+            </div>
+            <div class="role">
+                <h4>Consultant - DevOps</h4>
+                <span>2020 – 2021</span>
+                <p>Led end-to-end DevOps automation, building CI/CD pipelines with Jenkins, Ansible, Puppet, and Terraform, while implementing monitoring with DataDog. Migrated applications and databases to AWS, boosting scalability and reliability. Designed IaC frameworks, embedded automated security checks, and optimized infrastructure to improve efficiency, security posture, and team productivity.</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3><u><a href="https://www.linkedin.com/company/hashicorp/posts/?feedView=all">HashiCorp</a></u></h3>
+            <div class="role">
+                <h4>HashiCorp Ambassador</h4>
+                <span>2024 – Present</span>
+                <p>Recognized as one of 108 global HashiCorp Ambassadors, representing APJ in 2024. Delivered talks at HashiConf and HashiTalks: India, reaching 1,000+ practitioners on Terraform automation and cloud security. Authored 20+ blogs and guides, contributed open-source modules to Terraform AWS and Cloud Control providers adopted by global users, and mentored 500+ professionals and students through workshops and community programs.</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>MES Garware College of Commerce</h3>
+            <div class="role">
+                <h4>Industry Expert Member on Board of Studies(BoS)</h4>
+                <span>2024 – Present</span>
+                <p>Contribute and guide as an Industry Expert Member on the Board of Studies (BoS) of Information and Communication Technology (ICT, MES Garware College of Commerce (Autonomous)).</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Sanjivani College of Engineering</h3>
+            <div class="role">
+                <h4>Adjunct Professor</h4>
+                <span>2023 – Present</span>
+                <p>Outside of work, volunteer as Adjunct Professor to educate and share IT experience to rural engineering students.</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3><u><a href = "https://www.linkedin.com/company/fireeye/">FireEye, Inc</a></u></h3>
+            <div class="role">
+                <h4>Staff DevOps Engineer</h4>
+                <span>2019 – 2020</span>
+                <p>Led end-to-end DevOps automation, achieving 100% CI/CD pipeline automation with Jenkins, Ansible, Puppet, and Terraform. Migrated all on-prem apps and databases to AWS, improving scalability and reliability while cutting costs by 30%. Built IaC frameworks, containerized workloads with Docker & Kubernetes, and embedded automated security, reducing provisioning time by 60% and incident response times by 40%.</p>
+            </div>
+            <div class="role">
+                <h4>Senior DevOps Engineer</h4>
+                <span>2017 – 2018</span>
+                <p>Collaborated as a key team member across the product lifecycle, implementing DevOps automation with Ansible, Jenkins, Puppet, Terraform, Docker, and Kubernetes. Designed and managed scalable AWS infrastructure (EC2, S3, VPC, Redshift, IAM, Lambda) and administered diverse databases including RDS, DynamoDB, MySQL, MongoDB, and Elasticsearch. Built Big Data ecosystems with Cloudera/Hortonworks and ensured resilience through advanced disaster recovery solutions, while proactively monitoring with CloudWatch, DataDog, and Nagios.</p>
+            </div>
+            <div class="role">
+                <h4>Senior Big Data Administrator</h4>
+                <span>2016 – 2017</span>
+                <p>Led and mentored DBA teams while architecting scalable and secure database solutions with strong data modeling and schema design. Administered diverse databases including Cassandra, MongoDB, HBase, Elasticsearch, and MariaDB, ensuring high availability and performance. Optimized database operations through best practices, migrations, and change control policies, strengthening both reliability and compliance.</p>
+            </div>
+        </div>
+     
+        <div class="work-card">
+            <h3><u><a href="https://www.linkedin.com/company/opustechnologies/">Opus Consulting Solutions</a></u></h3>
+            <div class="role">
+                <h4>Technical Lead- Big Data Hadoop</h4>
+                <span>2015 – 2016</span>
+                <p>Led large-scale Hadoop cluster deployments on AWS and on-prem, ensuring high availability, security, and performance. Built ETL pipelines integrating semi-structured/unstructured data from RDBMS and NoSQL sources, with transformations in Python and ingestion into Hadoop ecosystems. Strengthened security with SSL, AWS policies, and Apache Ranger, while optimizing Hive queries, automating workflows, and managing backup, recovery, and cluster stability.</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3><u><a href="https://www.linkedin.com/company/ibm/posts/?feedView=all">IBM India Private Limited</a></u></h3>
+            <div class="role">
+                <h4>Senior Database Administrator</h4>
+                <span>2015</span>
+                <p>Managed Oracle E-Business Suite 11i environments, ensuring smooth operations, data migration, and system reliability. Automated health checks, optimized storage with Oracle ASM, and supported replication with Oracle GoldenGate. Streamlined deployments and monitored performance to resolve issues proactively.</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3><u><a href = "https://www.linkedin.com/company/kpit/">KPIT Technologies Ltd</a></u></h3>
+            <div class="role">
+                <h4>Big Data Hadoop Administrator</h4>
+                <span>2013 - 2015</span>
+                <p>Implemented and administered Hadoop clusters across Ubuntu and other OS, ensuring performance, scalability, and reliability. Managed core Hadoop ecosystem components (HBase, Hive, Pig, Oozie, ZooKeeper, Sqoop, Flume) and provided robust HDFS support with backup, failover, and disaster recovery. Automated operational tasks with shell scripts and ensured 24/7 support for critical Big Data environments.</p>
+            </div>
+            <div class="role">
+                <h4>Oracle Apps DBA</h4>
+                <span>2011 - 2015</span>
+                <p>Administered Oracle E-Business Suite 11i/R12 with expertise in patching, performance tuning, and concurrent manager administration. Skilled in Oracle utilities (FNDCPASS, FNDLOAD, ADPATCH, etc.), Autoconfig, and workflow mailer troubleshooting. Proficient in Oracle Database 10g/11g with Unix shell scripting for automation and system integration.</p>
+            </div>
+        </div>
+        
+        <div class="work-card">
+            <h3>Gaikwad Classes</h3>
+            <div class="role">
+                <h4>Founder</h4>
+                <span>2004 - 2008</span>
+                <p>I founded and managed my own part-time coaching classes for students in grades 5 through 12, including those in the Science stream.</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>C-DAC PACE Authorised DOT-COM Computer Training Centre</h3>
+            <div class="role">
+                <h4>Technical Trainer</h4>
+                <span>2003 - 2004</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Aptech Computer Education</h3>
+            <div class="role">
+                <h4>Faculty Member</h4>
+                <span>2002 - 2003</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="awards">
+    <h2>Awards & Achievements</h2>
+    <div class="awards-container">
+        <div class="awards-card">
+            <h3><a href="https://www.aibcf.com/dr-rahul-gaikwad/">Man of Excellence</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by AIBCF  | 2025</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.hashicorp.com/en/ambassador/directory?q=Dr.%20Rahul">HashiCorp Ambassador</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by HashiCorp | 2025</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.iafindia.com/dr-rahul-gaikwad/">Indian Achievers</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by IAF | 2024</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.hashicorp.com/en/ambassador/directory?q=Dr.%20Rahul">HashiCorp Ambassador</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by HashiCorp | 2024</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.mypunepulse.com/pune-dr-rahul-sharad-gaikwad-has-won-best-phd-thesis-award/">Best PhD Thesis</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by Prestige | 2024</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.asiaeducationconclave.com/">Research Scholar of Year Award in IT</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by Global Asia Education | 2023</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.linkedin.com/posts/dr-rahul-gaikwad_aws-tfc-gcci-activity-7030525724440543232-RbZR?utm_source=share&utm_medium=member_desktop&rcm=ACoAADlbbqwBURy054KT61oIoiRTs9E8dRHE3zE">Inspiration Award</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by AWS | 2023</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.insc.in/awards/singleinfo.php?tid=7844">Young Researcher Award</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by Institute of Scholars (InSc) | 2022</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.linkedin.com/company/the-academic-insights/">Featured in The Knowledge Review Magazines - Author of Month</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by APG at AWS</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.scylladb.com/2019/08/29/scylla-university-challenge-winners/#:~:text=Rahul%20S.%20Gaikwad,hands-on%20knowledge.%E2%80%9D">Top 5 winner in ScyllaDB Challenge</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by ScyllaDB</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://www.scylladb.com/2019/11/06/winners-of-the-scylla-summit-2019-user-awards/#:~:text=Best%20Use%20of%20Scylla%20with%20a,roughly%2010X%20faster%20than%20other%20options.">The Best Scylla User Award</a></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <span>Issued by ScyllaDB | 2019</span>
+        </div>
+    </div>
+</section>
+
+<section id="patent&publication">
+    <h2>Patents</h2>
+    <div class="pp-container">
+        <div class="pp-card">
+            <h3><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4899_1/Part-1.pdf">WRITER IDENTIFICATION USING NEURAL NETWORKS</a></h3>
+            <p>Computer Vision has been evolving everyday with advancement in the Deep Learning. Residual Neural Networks is one of such image classification techniques. This paper is an application of ResNet 50 for the purpose of writer identification using handwriting biometric – signature. Different signature verification competitions had used many approaches. Here SigComp2009 dataset is used and experimental results are discussed. ResNet 50 is able to achieved 92% accuracy for 780 signatures used randomly from ICDAR 2009 dataset of genuine signatures.</p>
+            <span>IN 202021033854 · Filed Aug 7, 2020</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4901_1/Part-1.pdf">IT SYSTEM ALERT CLASSIFICATION AND PREDICTION OF STANDARD OPERATING PROCEDURES (SOP) USING MACHINE LEARNING ALGORITHMS</a></h3>
+            <p>System alerts in IT operations are often unpredictable since they vary across projects, components, environments, and alert types, making their Standard Operating Procedures (SOPs) difficult to determine. This research explores the use of efficient data mining techniques to predict the appropriate SOPs for alerts, enabling quicker resolution of issues, minimizing manual efforts, and reducing downtime. By mapping alerts to recommended solutions in a systematic way, the approach not only improves reliability and availability of IT services but also ensures smoother business operations for end users.</p>
+            <span>IN 202021033083 · Filed Aug 1, 2020</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4901_1/Part-1.pdf">ASSOCIATION RULE MINING IN SYSTEM EVENT LOGS TO DISCOVER PATTERNS</a></h3>
+            <p>This research focuses on log analysis in IT systems, highlighting the challenges of handling large, complex, and unstructured logs that make manual inspection impractical. It emphasizes parsing logs into structured data, correlating diverse information, and uncovering patterns as key aspects of AIOps. The study evaluates over a hundred log events across distributed systems and services, presenting association rules that provide valuable insights for understanding, troubleshooting, and resolving system issues.</p>
+            <span>IN 202021033084 · Filed Aug 1, 2020</span>
+        </div>
+    </div>
+    <h2>Publications</h2>
+    <div class="pp-container">
+        <div class="pp-card">
+            <h3><a href= "http://www.thedesignengineering.com/index.php/DE/issue/view/27">A Framework Design for Algorithmic IT Operations (AIOps)</a></h3>
+            <p>This research highlights AIOps (Artificial Intelligence for IT Operations) as an evolving approach that uses machine learning to address complex IT operational challenges, such as log event classification, alert prediction, SOP automation, and incident resolution. It emphasizes AIOps’ role in improving service quality, customer satisfaction, and DevOps productivity while reducing human effort and costs. The work reviews components, use cases, and challenges of AIOps, and further proposes a framework design based on prior research, stressing the need for continuous scientific exploration and improvement.</p>
+            <span>Design Engineering (Toronto) · Jun 5, 2021</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "http://testmagzine.biz/index.php/testmagzine/article/view/5508">Association Rule Mining in System Event Logs to Discover Patterns</a></h3>
+            <p>This research paper highlights the growing challenges of log analysis in large, complex IT systems, where traditional manual methods are no longer feasible. It emphasizes the need to parse unstructured log data into structured formats for effective processing and correlation. The study presents a comprehensive evaluation of over a hundred log events across distributed systems, services, and application servers, focusing on discovering association rules. These rules provide deeper insights into log patterns, aiding in system issue investigation and troubleshooting within the context of AIOps.</p>
+            <span>SCOPUS - Test Engineering and Management journal · Apr 13, 2020</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://www.jardcs.org/abstract.php?id=344#">IT System Alert Classification and Prediction of Standard Operating Procedures (SOP) using Machine Learning Algorithms</a></h3>
+            <p>The abstract highlights the challenge of predicting system alerts and their corresponding Standard Operating Procedures (SOPs), which vary across projects, components, environments, and alert types. Since alerts and SOPs are critical for resolving IT issues, accurate prediction can help prevent downtimes, ensure service reliability, and reduce manual effort and resolution time. This research focuses on using efficient data mining techniques to predict recommended actions or solutions (SOPs) from alert data, addressing the critical issue of mining alerts effectively.</p>
+            <span>SCOPUS - Journal of Advanced Research in Dynamical and Control Systems (JARDCS) · May 11, 2019</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://ijaconline.com/wp-content/uploads/2018/12/06-Rahul-Gaikwad.pdf">Review Of Machine Learning Algorithms For IT Operations</a></h3>
+            <p>The abstract emphasizes the growing need to predict system alerts and failures to avoid unexpected downtimes and ensure reliable business services. Logs generated from applications, databases, networks, servers, and business processes contain valuable information but are produced in massive volumes, making manual analysis impractical. To address this, the paper explores the use of machine learning algorithms for automated log and alert analysis. By processing and uncovering insights from these logs, the proposed approach helps in better understanding system behavior, improving fault prediction, and reducing downtime.
+</p>
+            <span>Journal of Analysis and Computation (JAC) · Dec 6, 2018</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">NoSQL Database does not mean No Security </a></h3>
+            <span>ASM’s INTERNATIONAL E-Journal INCON-XII · Jan 21, 2017</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Deep Learning Approach towards Cybersecurity with an Artificial Brain</a></h3>
+            <span>ASM’s INTERNATIONAL E-Journal INCON-XII · Jan 21, 2017</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Big Data: Building Smart Cities in INDIA</a></h3>
+            <span>ASM’s International E-Journal · Jan 9, 2016</span>
+        </div>
+        <div class="pp-card">
+            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Internet of Things (IoT): Revolution of Internet for Smart Environment</a></h3>
+            <span>ASM’s International E-Journal · Jan 9, 2016</span>
+        </div>
+    </div>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <div class="education-container">
+        <div class="education-card">
+            <img src="sppu.jpg" alt="SPPU Logo">
+            <div>
+                <h3>Doctor of Philosophy - PhD, Machine Learning, AIOps</h3>
+                <p>Savitribai Phule Pune University</p>
+                <span>2018 - 2022</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <img src="NIBM.png" alt="NIBM Logo">
+            <div>
+                <h3>Executive MBA, Project Management</h3>
+                <p>NIBM Institute</p>
+                <span>2013 – 2014</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <img src="shivaji_university_logo.jpeg" alt="Shivaji University Logo">
+            <div>
+                <h3>MCA (Engg), Computer Applications</h3>
+                <p>Shivaji University</p>
+                <span>2008 – 2011</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <img src="sppu.jpg" alt="SPPU Logo">
+            <div>
+                <h3>Master of Arts (M.A.) Part I, History</h3>
+                <p>Savitribai Phule Pune University</p>
+                <span>2007 – 2008</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <img src="sppu.jpg" alt="SPPU Logo">
+            <div>
+                <h3>Bachelor of Arts - BA, History</h3>
+                <p>Savitribai Phule Pune University</p>
+                <span>2003 – 2007</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <img src="loading.jpg" alt="APTECH Logo">
+            <div>
+                <h3>Diploma In Computer Software (DCS), Computer Programming</h3>
+                <p>APTECH Computer Education</p>
+                <span>2001 – 2002</span>
+            </div>
+        </div>
+        <div class="education-card">
+            <img src="IGNOU.jpeg" alt="IGNOU Logo">
+            <div>
+                <h3>Post Graduate Diploma in Financial Management (PGDFM), Finance and Financial Management Services</h3>
+                <p>Indira Gandhi National Open University</p>
+                <span>March 2023</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        <div class="skills-card">
+            <span>Devops</span>
+        </div>
+        <div class="skills-card">
+            <span>Entrepreneurship Education</span>
+        </div>
+        <div class="skills-card">
+            <span>Creative Entrepreneurship</span>
+        </div>
+        <div class="skills-card">
+            <span>Tutoring</span>
+        </div>
+        <div class="skills-card">
+            <span>Teaching</span>
+        </div>
+        <div class="skills-card">
+            <span>Mentoring</span>
+        </div>
+        <div class="skills-card">
+            <span>Training</span>
+        </div>
+        <div class="skills-card">
+            <span>Student Development</span>
+        </div>
+        <div class="skills-card">
+            <span>Volunteering</span>
+        </div>
+        <div class="skills-card">
+            <span>Guest Lecturing</span>
+        </div>
+        <div class="skills-card">
+            <span>Artificial Intelligence (AI)</span>
+        </div>
+        <div class="skills-card">
+            <span>MLOps</span>
+        </div>
+        <div class="skills-card">
+            <span>Solutions Architect</span>
+        </div>
+        <div class="skills-card">
+            <span>Generative AI</span>
+        </div>
+        <div class="skills-card">
+            <span>CockroachDB</span>
+        </div>
+        <div class="skills-card">
+            <span>AIOps</span>
+        </div>
+        <div class="skills-card">
+            <span>Infrastructure as Code (IaC)</span>
+        </div>
+        <div class="skills-card">
+            <span>Cloud Computing</span>
+        </div>
+        <div class="skills-card">
+            <span>Kubernetes</span>
+        </div>
+        <div class="skills-card">
+            <span>Database Administration</span>
+        </div>
+        <div class="skills-card">
+            <span>High Availability</span>
+        </div>
+        <div class="skills-card">
+            <span>High Availability</span>
+        </div>
+        <div class="skills-card">
+            <span>Data Migration</span>
+        </div>
+        <div class="skills-card">
+            <span>Virtualization</span>
+        </div>
+        <div class="skills-card">
+            <span>Machine Learning</span>
+        </div>
+        <div class="skills-card">
+            <span>Unix Shell Scripting</span>
+        </div>
+        <div class="skills-card">
+            <span>Data Science</span>
+        </div>
+        <div class="skills-card">
+            <span>Oracle</span>
+        </div>
+        <div class="skills-card">
+            <span>Hadoop</span>
+        </div>
+        <div class="skills-card">
+            <span>MongoDB</span>
+        </div>
+        <div class="skills-card">
+            <span>Databases</span>
+        </div>
+        <div class="skills-card">
+            <span>Amazon Web Services</span>
+        </div>
+        <div class="skills-card">
+            <span>HDFC</span>
+        </div>
+        <div class="skills-card">
+            <span>HBase</span>
+        </div>
+        <div class="skills-card">
+            <span>Ambari</span>
+        </div>
+        <div class="skills-card">
+            <span>Docker</span>
+        </div>
+        <div class="skills-card">
+            <span>Ansible</span>
+        </div>
+        <div class="skills-card">
+            <span>Cloudera</span>
+        </div>
+        <div class="skills-card">
+            <span>Teraform</span>
+        </div>
+        <div class="skills-card">
+            <span>Jenkins</span>
+        </div>
+        <div class="skills-card">
+            <span>Git</span>
+        </div>
+        <div class="skills-card">
+            <span>ElasticSearch</span>
+        </div>
+        <div class="skills-card">
+            <span>Scylladb</span>
+        </div>
+        <div class="skills-card">
+            <span>Hive</span>
+        </div>
+        <div class="skills-card">
+            <span>Cassandra</span>
+        </div>
+        <div class="skills-card">
+            <span>MariaDB</span>
+        </div>
+        <div class="skills-card">
+            <span>RHCSA</span>
+        </div>
+        <div class="skills-card">
+            <span>OCA</span>
+        </div>
+        <div class="skills-card">
+            <span>Datastax</span>
+        </div>
+        <div class="skills-card">
+            <span>MongoDB Atlas</span>
+        </div>
+        <div class="skills-card">
+            <span>Galera</span>
+        </div>
+        <div class="skills-card">
+            <span>HDPCA</span>
+        </div>
+        <div class="skills-card">
+            <span>Hortonworks</span>
+        </div>
+        <div class="skills-card">
+            <span>Knox</span>
+        </div>
+        <div class="skills-card">
+            <span>Weka</span>
+        </div>
+        <div class="skills-card">
+            <span>Kafka</span>
+        </div>
+        <div class="skills-card">
+            <span>Puppet</span>
+        </div>
+        <div class="skills-card">
+            <span>Containerization</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 · Dr. Rahul Gaikwad</p>
+</footer>
+
+</body>
+</html>
