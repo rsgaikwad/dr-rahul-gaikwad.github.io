@@ -154,7 +154,7 @@
     /* Awards & Achievements */
     .awards-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 20px;
     }
     .awards-card {
@@ -178,6 +178,14 @@
     .awards-card h3 a {
         color: #6C63FF;
         text-decoration: none;
+    }
+    .awards-card h3 a:hover {
+        color: #000;
+    }
+    .awards-card h3 a::after {
+        content: ' ↗';
+        font-size: 0.8em;
+        opacity: 0.7;
     }
     .awards-card p {
         font-size: 0.9rem;
@@ -292,31 +300,73 @@
     }
 
     /*Patents & Publications*/
+    .research-subsection {
+        background: #fff;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border-top: 4px solid #6C63FF;
+        transition: all 0.3s ease;
+    }
+    .research-subsection:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .research-subsection h3 {
+        color: #6C63FF;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .research-subsection h3::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: #6C63FF;
+        border-radius: 50%;
+    }
     .pp-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
         gap: 20px;
     }
     .pp-card {
-        background: #fff;
+        background: #f9f9f9;
         border: 1px solid #e0e0e0;
         border-radius: 12px;
         padding: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        transition: all 0.3s ease;
     }
     .pp-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        background: #fff;
     }
-    .pp-card h3 {
-        margin: 0 0 0px;
-        font-size: 1.1rem;
-        color: #6C63FF;
+    .pp-card h4 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #333;
     }
-    .pp-card h3 a {
-        color: #6C63FF;
+    .pp-card h4 a {
+        color: #333;
         text-decoration: none;
+    }
+    .pp-card h4 a:hover {
+        color: #6C63FF;
+    }
+    .pp-card h4 a::after {
+        content: ' ↗';
+        font-size: 0.8em;
+        opacity: 0.7;
+    }
+    .pub-card h4 a::after {
+        content: ' ↗';
+        font-size: 0.8em;
+        opacity: 0.7;
     }
     .pp-card p {
         font-size: 0.9rem;
@@ -331,7 +381,7 @@
     
     /* Section styling */
     section {
-        padding: 80px 5%;
+        padding: 10px 5% 80px 5%;
         min-height: 80vh;
     }
     section:nth-child(even) {
@@ -450,15 +500,22 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.video-card .description {
-    max-height: 4.5em;
+.video-card .description p.summary-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    line-height: 1.5em;
-    flex-grow: 1;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
-.video-card .description.expanded {
-    max-height: none;
+.video-card .description p.summary-text.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+}
+
+.video-card .description {
+    flex-grow: 1;
 }
 
 .read-more-btn {
@@ -467,8 +524,11 @@
     color: #6C63FF;
     cursor: pointer;
     font-size: 0.85rem;
-    margin: 5px 0;
+    margin: 5px auto;
     text-decoration: underline;
+    display: block;
+    text-align: center;
+    width: auto;
 }
 
 .video-card .bottom-section {
@@ -556,21 +616,365 @@
     font-weight: bold;
 }
 
+/* Publications Section */
+.publications-subsection {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-top: 4px solid #6C63FF;
+    transition: all 0.3s ease;
+}
+.publications-subsection:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.publications-subsection h3 {
+    color: #6C63FF;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.publications-subsection h3::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #6C63FF;
+    border-radius: 50%;
+}
+.pub-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 15px;
+}
+/* AWS Blogs Cards */
+.publications-subsection:nth-child(2) .pub-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    height: fit-content;
+}
+.publications-subsection:nth-child(2) .pub-card:hover {
+    background: #fff;
+    border-color: #6C63FF;
+    transform: translateY(-1px);
+}
+.publications-subsection:nth-child(2) .pub-card h4 {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.3;
+}
+.publications-subsection:nth-child(2) .pub-card h4 a {
+    color: #333;
+    text-decoration: none;
+}
+.publications-subsection:nth-child(2) .pub-card h4 a:hover {
+    color: #6C63FF;
+}
+.publications-subsection:nth-child(2) .pub-card span {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.2;
+    margin-top: auto;
+}
+.publications-subsection:nth-child(4) .pub-card:hover {
+    background: #fff;
+    border-color: #6C63FF;
+    transform: translateY(-1px);
+}
+.publications-subsection:nth-child(4) .pub-card h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #333;
+}
+.publications-subsection:nth-child(4) .pub-card h4 a {
+    color: #333;
+    text-decoration: none;
+}
+.publications-subsection:nth-child(4) .pub-card h4 a:hover {
+    color: #6C63FF;
+}
+.publications-subsection:nth-child(4) .pub-card span {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* AWS Prescriptive Guidance Cards */
+.publications-subsection:nth-child(3) .pub-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+.publications-subsection:nth-child(3) .pub-card:hover {
+    background: #fff;
+    border-color: #6C63FF;
+    transform: translateY(-1px);
+}
+.publications-subsection:nth-child(3) .pub-card h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #333;
+}
+.publications-subsection:nth-child(3) .pub-card h4 a {
+    color: #333;
+    text-decoration: none;
+}
+.publications-subsection:nth-child(3) .pub-card h4 a:hover {
+    color: #6C63FF;
+}
+.publications-subsection:nth-child(3) .pub-card span {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+/* AWS Community Blogs Cards */
+.publications-subsection:nth-child(4) .pub-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    height: fit-content;
+}
+.publications-subsection:nth-child(4) .pub-card:hover {
+    background: #fff;
+    border-color: #6C63FF;
+    transform: translateY(-1px);
+}
+.publications-subsection:nth-child(4) .pub-card h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #333;
+}
+.publications-subsection:nth-child(4) .pub-card h4 a {
+    color: #333;
+    text-decoration: none;
+}
+.publications-subsection:nth-child(4) .pub-card h4 a:hover {
+    color: #6C63FF;
+}
+.publications-subsection:nth-child(4) .pub-card span {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Other Publication Cards */
+.pub-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+.pub-card:hover {
+    background: #fff;
+    border-color: #6C63FF;
+    transform: translateY(-1px);
+}
+.pub-card h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #333;
+}
+.pub-card h4 a {
+    color: #333;
+    text-decoration: none;
+}
+.pub-card h4 a:hover {
+    color: #6C63FF;
+}
+.pub-card span {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+.pub-card .summary-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.pub-card .summary-text.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+}
+.pub-card span.summary-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.pub-card span.summary-text.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+}
+.read-more-btn {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: auto;
+}
+.read-more-btn:hover {
+    background: #555;
+}
+
+/* Celebration Modal */
+.celebration-content {
+    background: linear-gradient(135deg, #6C63FF, #9C88FF);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+    animation: celebrationPulse 0.6s ease-in-out;
+}
+
+.celebration-animation h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    animation: bounce 1s infinite;
+}
+
+.celebration-animation p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.celebration-emojis {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.celebration-emojis span {
+    font-size: 2rem;
+    animation: float 2s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+}
+
+.celebration-emojis span:nth-child(1) { --i: 0; }
+.celebration-emojis span:nth-child(2) { --i: 1; }
+.celebration-emojis span:nth-child(3) { --i: 2; }
+.celebration-emojis span:nth-child(4) { --i: 3; }
+.celebration-emojis span:nth-child(5) { --i: 4; }
+
+@keyframes celebrationPulse {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Welcome Screen */
+#welcomeScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+.welcome-content {
+    text-align: center;
+    color: #333;
+}
+.welcome-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #6C63FF;
+}
+.welcome-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.bounce-arrow {
+    font-size: 2rem;
+    animation: bounceArrow 1.5s infinite;
+    margin: 20px 0;
+}
+.welcome-hint {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+@keyframes bounceArrow {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- Welcome Screen -->
+<div id="welcomeScreen">
+    <div class="welcome-content">
+        <h1>Welcome</h1>
+        <p>Dr. Rahul Gaikwad - Portfolio</p>
+        <div class="bounce-arrow">↓</div>
+        <p class="welcome-hint">Click or scroll to explore</p>
+    </div>
+</div>
 
 <nav>
     <div class="logo"></div>
         <div>
             <a href="#">About</a>
             <a href="#work">Work</a>
+            <a href="#volunteer">Volunteer</a>
             <a href="#awards">Awards</a>
-            <a href="#patents">Patents</a>
+            <a href="#research">Research</a>
             <a href="#publications">Publications</a>
             <a href="#education">Education</a>
-            <a href="#videos">Talks</a>
+            <a href="#videos">Media</a>
         </div>
 </nav>
 
@@ -590,11 +994,10 @@
             <a href="https://github.com/rsgaikwad"><img src="data:image/png;base64,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" alt="GitHub" style="background:black;padding:5px;"></a>
             <a href="https://www.linkedin.com/in/dr-rahul-gaikwad/"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="background:#0A66C2;padding:5px;"></a>
             <a href="https://x.com/Dr_RahulGaikwad"><img src="data:image/jpeg;base64,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" alt="X" style="background:#000000;padding:5px;"></a>
-            <a href="https://www.instagram.com/the_technocrat_owl"><img src="data:image/jpeg;base64,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" alt="Facebook" style="background:#b26dea;padding:5px;"></a>
         </div>
         <div class="buttons">
-            <a href="mailto:your.email@example.com">CONTACT ME</a>
-            <a href="See-my-resume.pdf" class="secondary" target="_blank" rel="noopener noreferrer">SEE MY RESUME</a>
+            <a href="mailto:rahulgaikwad1986@gmail.com" target="_blank">CONTACT ME</a>
+            <a href="#" class="secondary" onclick="openBadgesModal()">DIGITAL BADGES</a>
         </div>
     </div>
     
@@ -607,7 +1010,6 @@
 </section>
 
 <section id="work">
-<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
     <h2>Work</h2>
     <div class="work-container"></div>
         <div class="work-card">
@@ -629,32 +1031,7 @@
             </div>
         </div>
 
-        <div class="work-card">
-            <h3><u><a href="https://www.linkedin.com/company/hashicorp/posts/?feedView=all">HashiCorp</a></u></h3>
-            <div class="role">
-                <h4>HashiCorp Ambassador</h4>
-                <span>2024 – Present</span>
-                <p>Recognized as one of 108 global HashiCorp Ambassadors, representing APJ in 2024. Delivered talks at HashiConf and HashiTalks: India, reaching 1,000+ practitioners on Terraform automation and cloud security. Authored 20+ blogs and guides, contributed open-source modules to Terraform AWS and Cloud Control providers adopted by global users, and mentored 500+ professionals and students through workshops and community programs.</p>
-            </div>
-        </div>
 
-        <div class="work-card">
-            <h3>MES Garware College of Commerce</h3>
-            <div class="role">
-                <h4>Industry Expert Member on Board of Studies(BoS)</h4>
-                <span>2024 – Present</span>
-                <p>Contribute and guide as an Industry Expert Member on the Board of Studies (BoS) of Information and Communication Technology (ICT, MES Garware College of Commerce (Autonomous)).</p>
-            </div>
-        </div>
-
-        <div class="work-card">
-            <h3>Sanjivani College of Engineering</h3>
-            <div class="role">
-                <h4>Adjunct Professor</h4>
-                <span>2023 – Present</span>
-                <p>Outside of work, volunteer as Adjunct Professor to educate and share IT experience to rural engineering students.</p>
-            </div>
-        </div>
 
         <div class="work-card">
             <h3><u><a href = "https://www.linkedin.com/company/fireeye/">FireEye, Inc</a></u></h3>
@@ -716,6 +1093,52 @@
             </div>
         </div>
 
+
+    </div>
+</section>
+
+<section id="volunteer">
+    <h2>Volunteer</h2>
+    
+    <div class="research-subsection">
+        <h3>Public Speaking</h3>
+        <div class="pp-container">
+            <div class="pp-card">
+                <h4>Speaker at</h4>
+                <p>AWS re:Invent, HashiConf, HashiTalks, IIT Bombay, CDK Day, Community Days, and various technology conferences worldwide. Delivered various technical sessions and workshops on cloud computing, infrastructure as code, DevOps, AI/ML, and emerging technologies to audiences.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="work-container">
+        <div class="work-card">
+            <h3><u><a href="https://www.linkedin.com/company/hashicorp/posts/?feedView=all">HashiCorp</a></u></h3>
+            <div class="role">
+                <h4>HashiCorp Ambassador</h4>
+                <span>2024 – Present</span>
+                <p>Recognized as one of 108 global HashiCorp Ambassadors, representing APJ in 2024. Delivered talks at HashiConf and HashiTalks: India, reaching 1,000+ practitioners on Terraform automation and cloud security. Authored 20+ blogs and guides, contributed open-source modules to Terraform AWS and Cloud Control providers adopted by global users, and mentored 500+ professionals and students through workshops and community programs.</p>
+            </div>
+        </div>
+        
+
+        <div class="work-card">
+            <h3>MES Garware College of Commerce</h3>
+            <div class="role">
+                <h4>Industry Expert Member on Board of Studies(BoS)</h4>
+                <span>2024 – Present</span>
+                <p>Contribute and guide as an Industry Expert Member on the Board of Studies (BoS) of Information and Communication Technology (ICT, MES Garware College of Commerce (Autonomous)).</p>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Sanjivani College of Engineering</h3>
+            <div class="role">
+                <h4>Adjunct Professor</h4>
+                <span>2023 – Present</span>
+                <p>Outside of work, volunteer as Adjunct Professor to educate and share IT experience to rural engineering students.</p>
+            </div>
+        </div>
+
         <div class="work-card">
             <h3>C-DAC PACE Authorised DOT-COM Computer Training Centre</h3>
             <div class="role">
@@ -735,136 +1158,386 @@
 </section>
 
 <section id="awards">
-<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
-
     <h2>Awards & Achievements</h2>
     <div class="awards-container">
         <div class="awards-card">
             <h3><a href="https://www.aibcf.com/dr-rahul-gaikwad/">Man of Excellence</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Honoured by AIBCF for distinguished contributions in technology, research, and community leadership. Recognized as a trailblazer across domains including cloud computing, AI/ML, and DevOps — combining over 15 years of industry expertise with academic contributions and mentorship.</p>
             <span>Issued by AIBCF  | 2025</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.hashicorp.com/en/ambassador/directory?q=Dr.%20Rahul">HashiCorp Ambassador</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Recognized as a HashiCorp Ambassador in India for thought leadership and expertise in Terraform, Vault, Consul, Waypoint, and the HashiCorp Cloud Platform. This honor highlights contributions as a community advocate, mentor, and technical voice promoting modern infrastructure practices and open-source adoption across developer and operations communities.</p>
             <span>Issued by HashiCorp | 2025</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.iafindia.com/dr-rahul-gaikwad/">Indian Achievers</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Honoured by the Indian Achievers’ Forum for outstanding contributions to technology and research, with impactful work spanning Cloud, DevOps, and AIOps. This recognition highlights leadership, innovation, and consistent efforts in bridging industry and academia.</p>
             <span>Issued by IAF | 2024</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.hashicorp.com/en/ambassador/directory?q=Dr.%20Rahul">HashiCorp Ambassador</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Recognized as one of 108 global HashiCorp Ambassadors, representing APJ in 2024. Delivered talks at HashiConf and HashiTalks: India, reaching 1,000+ practitioners on Terraform automation and cloud security. Authored 20+ blogs and guides, contributed open-source modules to Terraform AWS and Cloud Control providers adopted by global users, and mentored 500+ professionals and students through workshops and community programs.</p>
             <span>Issued by HashiCorp | 2024</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.mypunepulse.com/pune-dr-rahul-sharad-gaikwad-has-won-best-phd-thesis-award/">Best PhD Thesis</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Honoured with the “Best PhD Thesis Award” by the Prestige Institute of Management & Research, Gwalior, recognizing groundbreaking research in Artificial Intelligence in IT Operations (AIOps) presented at the 15th International Conference on “Fostering Industry–Academia Partnership for Driving Innovation and Strategizing Trade and Industry.”.</p>
             <span>Issued by Prestige | 2024</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.asiaeducationconclave.com/">Research Scholar of Year Award in IT</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Awarded by Global Asia Education at the Asia Education Conclave, this honour recognises outstanding achievement in IT research, particularly for pioneering work in AIOps and a strong record of academic excellence. The award was conferred at a Bangalore ceremony attended by distinguished educators and researchers.</p>
             <span>Issued by Global Asia Education | 2023</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.linkedin.com/posts/dr-rahul-gaikwad_aws-tfc-gcci-activity-7030525724440543232-RbZR?utm_source=share&utm_medium=member_desktop&rcm=ACoAADlbbqwBURy054KT61oIoiRTs9E8dRHE3zE">Inspiration Award</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Received the prestigious Inspiration Award from AWS for leading and inspiring the highest number of aspiring builders through community engagement. This milestone highlights a commitment to mentorship, positivity, and creating impact within the global cloud community.</p>
             <span>Issued by AWS | 2023</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.insc.in/awards/singleinfo.php?tid=7844">Young Researcher Award</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Honoured with the Young Researcher Award by the Institute of Scholars for notable contributions to research in Artificial Intelligence in IT Operations (AIOps). The award recognises innovative approaches, impactful findings, and dedication to advancing knowledge and best practices in the technology and research community.</p>
             <span>Issued by Institute of Scholars (InSc) | 2022</span>
         </div>
         <div class="awards-card">
-            <h3><a href="https://www.linkedin.com/company/the-academic-insights/">Featured in The Knowledge Review Magazines - Author of Month</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
-            <span>Issued by APG at AWS</span>
+            <h3><a href="https://www.linkedin.com/company/the-academic-insights/">Featured in The Knowledge Review Magazines</a></h3>
+            <p>Highlighted in The Knowledge Review Magazine as part of their “Best Medical Institutes in India: Admiring Health Care 2023” edition, recognising contributions to advancing healthcare education and fostering innovation within the medical community. This feature underscores a commitment to excellence and leadership in the field.</p>
+            <span>Issued by Asian Education Awards</span>
+        </div>
+        <div class="awards-card">
+            <h3><a href="https://theacademicinsights.com/India-s-Top-50-Engineering-Colleges-Survey-2023/#page=48">Featured in The Academic Insights Magazine</a></h3>
+            <p>Recognised in The Academic Insights Magazine as part of their “India’s Top 50 Engineering Colleges Survey 2023,” highlighting contributions to advancing engineering education and fostering innovation within the academic community. This feature underscores a commitment to excellence and leadership in the field.</p>
+            <span>Issued by The Academic Insights</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.scylladb.com/2019/08/29/scylla-university-challenge-winners/#:~:text=Rahul%20S.%20Gaikwad,hands-on%20knowledge.%E2%80%9D">Top 5 winner in ScyllaDB Challenge</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Ranked among the top 5 in the ScyllaDB University Challenge, a global competition recognising hands-on expertise in NoSQL databases. This achievement highlights proficiency in ScyllaDB, demonstrating its advantages over traditional NoSQL systems like Cassandra. The challenge underscored a commitment to mastering scalable, high-performance database solutions.</p>
             <span>Issued by ScyllaDB</span>
         </div>
         <div class="awards-card">
             <h3><a href="https://www.scylladb.com/2019/11/06/winners-of-the-scylla-summit-2019-user-awards/#:~:text=Best%20Use%20of%20Scylla%20with%20a,roughly%2010X%20faster%20than%20other%20options.">The Best Scylla User Award</a></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam ipsam, nesciunt at repellat quibusdam eveniet soluta quisquam, rerum ducimus ab.</p>
+            <p>Awarded at the ScyllaDB Summit 2019 for innovative application of ScyllaDB's single-table design, demonstrating its efficiency and scalability. This recognition underscores a commitment to leveraging ScyllaDB's capabilities to achieve high performance and simplicity in data modeling. The approach highlighted was particularly effective in scenarios requiring rapid data access and minimal latency.</p>
             <span>Issued by ScyllaDB | 2019</span>
         </div>
     </div>
 </section>
 
-<section id="patents">
-<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
-    <h2>Patents</h2>
-    <div class="pp-container">
-        <div class="pp-card">
-            <h3><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4899_1/Part-1.pdf">WRITER IDENTIFICATION USING NEURAL NETWORKS</a></h3>
-            <p>Computer Vision has been evolving everyday with advancement in the Deep Learning. Residual Neural Networks is one of such image classification techniques. This paper is an application of ResNet 50 for the purpose of writer identification using handwriting biometric – signature. Different signature verification competitions had used many approaches. Here SigComp2009 dataset is used and experimental results are discussed. ResNet 50 is able to achieved 92% accuracy for 780 signatures used randomly from ICDAR 2009 dataset of genuine signatures.</p>
-            <span>IN 202021033854 · Filed Aug 7, 2020</span>
-        </div>
-        <div class="pp-card">
-            <h3><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4901_1/Part-1.pdf">IT SYSTEM ALERT CLASSIFICATION AND PREDICTION OF STANDARD OPERATING PROCEDURES (SOP) USING MACHINE LEARNING ALGORITHMS</a></h3>
-            <p>System alerts in IT operations are often unpredictable since they vary across projects, components, environments, and alert types, making their Standard Operating Procedures (SOPs) difficult to determine. This research explores the use of efficient data mining techniques to predict the appropriate SOPs for alerts, enabling quicker resolution of issues, minimizing manual efforts, and reducing downtime. By mapping alerts to recommended solutions in a systematic way, the approach not only improves reliability and availability of IT services but also ensures smoother business operations for end users.</p>
-            <span>IN 202021033083 · Filed Aug 1, 2020</span>
-        </div>
-        <div class="pp-card">
-            <h3><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4901_1/Part-1.pdf">ASSOCIATION RULE MINING IN SYSTEM EVENT LOGS TO DISCOVER PATTERNS</a></h3>
-            <p>This research focuses on log analysis in IT systems, highlighting the challenges of handling large, complex, and unstructured logs that make manual inspection impractical. It emphasizes parsing logs into structured data, correlating diverse information, and uncovering patterns as key aspects of AIOps. The study evaluates over a hundred log events across distributed systems and services, presenting association rules that provide valuable insights for understanding, troubleshooting, and resolving system issues.</p>
-            <span>IN 202021033084 · Filed Aug 1, 2020</span>
+<section id="research">
+    <h2>Research</h2>
+    
+    <div class="research-subsection">
+        <h3>Patents</h3>
+        <div class="pp-container">
+            <div class="pp-card">
+                <h4><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4899_1/Part-1.pdf">WRITER IDENTIFICATION USING NEURAL NETWORKS</a></h4>
+                <p>Computer Vision has been evolving everyday with advancement in the Deep Learning. Residual Neural Networks is one of such image classification techniques. This paper is an application of ResNet 50 for the purpose of writer identification using handwriting biometric – signature. Different signature verification competitions had used many approaches. Here SigComp2009 dataset is used and experimental results are discussed. ResNet 50 is able to achieved 92% accuracy for 780 signatures used randomly from ICDAR 2009 dataset of genuine signatures.</p>
+                <span>IN 202021033854 · Filed Aug 7, 2020</span>
+            </div>
+            <div class="pp-card">
+                <h4><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4901_1/Part-1.pdf">IT SYSTEM ALERT CLASSIFICATION AND PREDICTION OF STANDARD OPERATING PROCEDURES (SOP) USING MACHINE LEARNING ALGORITHMS</a></h4>
+                <p>System alerts in IT operations are often unpredictable since they vary across projects, components, environments, and alert types, making their Standard Operating Procedures (SOPs) difficult to determine. This research explores the use of efficient data mining techniques to predict the appropriate SOPs for alerts, enabling quicker resolution of issues, minimizing manual efforts, and reducing downtime. By mapping alerts to recommended solutions in a systematic way, the approach not only improves reliability and availability of IT services but also ensures smoother business operations for end users.</p>
+                <span>IN 202021033083 · Filed Aug 1, 2020</span>
+            </div>
+            <div class="pp-card">
+                <h4><a href= "https://ipindia.gov.in/writereaddata/Portal/IPOJournal/1_4901_1/Part-1.pdf">ASSOCIATION RULE MINING IN SYSTEM EVENT LOGS TO DISCOVER PATTERNS</a></h4>
+                <p>This research focuses on log analysis in IT systems, highlighting the challenges of handling large, complex, and unstructured logs that make manual inspection impractical. It emphasizes parsing logs into structured data, correlating diverse information, and uncovering patterns as key aspects of AIOps. The study evaluates over a hundred log events across distributed systems and services, presenting association rules that provide valuable insights for understanding, troubleshooting, and resolving system issues.</p>
+                <span>IN 202021033084 · Filed Aug 1, 2020</span>
+            </div>
         </div>
     </div>
-</section>
-
-<section id="publications">
-<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
-    <h2>Publications</h2>
-    <div class="pp-container">
+    
+    <div class="research-subsection">
+        <h3>Articles</h3>
+        <div class="pp-container">
         <div class="pp-card">
-            <h3><a href= "http://www.thedesignengineering.com/index.php/DE/issue/view/27">A Framework Design for Algorithmic IT Operations (AIOps)</a></h3>
+            <h4><a href= "http://www.thedesignengineering.com/index.php/DE/issue/view/27">A Framework Design for Algorithmic IT Operations (AIOps)</a></h4>
             <p>This research highlights AIOps (Artificial Intelligence for IT Operations) as an evolving approach that uses machine learning to address complex IT operational challenges, such as log event classification, alert prediction, SOP automation, and incident resolution. It emphasizes AIOps’ role in improving service quality, customer satisfaction, and DevOps productivity while reducing human effort and costs. The work reviews components, use cases, and challenges of AIOps, and further proposes a framework design based on prior research, stressing the need for continuous scientific exploration and improvement.</p>
             <span>Design Engineering (Toronto) · Jun 5, 2021</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "http://testmagzine.biz/index.php/testmagzine/article/view/5508">Association Rule Mining in System Event Logs to Discover Patterns</a></h3>
+            <h4><a href= "http://testmagzine.biz/index.php/testmagzine/article/view/5508">Association Rule Mining in System Event Logs to Discover Patterns</a></h4>
             <p>This research paper highlights the growing challenges of log analysis in large, complex IT systems, where traditional manual methods are no longer feasible. It emphasizes the need to parse unstructured log data into structured formats for effective processing and correlation. The study presents a comprehensive evaluation of over a hundred log events across distributed systems, services, and application servers, focusing on discovering association rules. These rules provide deeper insights into log patterns, aiding in system issue investigation and troubleshooting within the context of AIOps.</p>
             <span>SCOPUS - Test Engineering and Management journal · Apr 13, 2020</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "https://www.jardcs.org/abstract.php?id=344#">IT System Alert Classification and Prediction of Standard Operating Procedures (SOP) using Machine Learning Algorithms</a></h3>
+            <h4><a href= "https://www.jardcs.org/abstract.php?id=344#">IT System Alert Classification and Prediction of Standard Operating Procedures (SOP) using Machine Learning Algorithms</a></h4>
             <p>The abstract highlights the challenge of predicting system alerts and their corresponding Standard Operating Procedures (SOPs), which vary across projects, components, environments, and alert types. Since alerts and SOPs are critical for resolving IT issues, accurate prediction can help prevent downtimes, ensure service reliability, and reduce manual effort and resolution time. This research focuses on using efficient data mining techniques to predict recommended actions or solutions (SOPs) from alert data, addressing the critical issue of mining alerts effectively.</p>
             <span>SCOPUS - Journal of Advanced Research in Dynamical and Control Systems (JARDCS) · May 11, 2019</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "https://ijaconline.com/wp-content/uploads/2018/12/06-Rahul-Gaikwad.pdf">Review Of Machine Learning Algorithms For IT Operations</a></h3>
+            <h4><a href= "https://ijaconline.com/wp-content/uploads/2018/12/06-Rahul-Gaikwad.pdf">Review Of Machine Learning Algorithms For IT Operations</a></h4>
             <p>The abstract emphasizes the growing need to predict system alerts and failures to avoid unexpected downtimes and ensure reliable business services. Logs generated from applications, databases, networks, servers, and business processes contain valuable information but are produced in massive volumes, making manual analysis impractical. To address this, the paper explores the use of machine learning algorithms for automated log and alert analysis. By processing and uncovering insights from these logs, the proposed approach helps in better understanding system behavior, improving fault prediction, and reducing downtime.
 </p>
             <span>Journal of Analysis and Computation (JAC) · Dec 6, 2018</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">NoSQL Database does not mean No Security </a></h3>
+            <h4><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">NoSQL Database does not mean No Security </a></h4>
             <span>ASM’s INTERNATIONAL E-Journal INCON-XII · Jan 21, 2017</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Deep Learning Approach towards Cybersecurity with an Artificial Brain</a></h3>
+            <h4><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Deep Learning Approach towards Cybersecurity with an Artificial Brain</a></h4>
             <span>ASM’s INTERNATIONAL E-Journal INCON-XII · Jan 21, 2017</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Big Data: Building Smart Cities in INDIA</a></h3>
+            <h4><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Big Data: Building Smart Cities in INDIA</a></h4>
             <span>ASM’s International E-Journal · Jan 9, 2016</span>
         </div>
         <div class="pp-card">
-            <h3><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Internet of Things (IoT): Revolution of Internet for Smart Environment</a></h3>
+            <h4><a href= "https://www.linkedin.com/in/dr-rahul-gaikwad/details/publications/">Internet of Things (IoT): Revolution of Internet for Smart Environment</a></h4>
             <span>ASM’s International E-Journal · Jan 9, 2016</span>
         </div>
     </div>
 </section>
 
+<section id="publications">
+    <h2>Publications</h2>
+    
+    <div class="publications-subsection">
+        <h3>AWS Blogs</h3>
+        <div class="pub-container">
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/devops/migrating-a-cdk-v1-application-to-cdk-v2-with-amazon-q-developer/">Migrating a CDK v1 Application to CDK v2 with Amazon Q Developer</a></h4>
+                <span>AWS DevOps & Developer Productivity Blog • APR 2025</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/devops/how-to-enhance-your-application-resiliency-using-amazon-q-developer/">How to enhance your application resiliency using Amazon Q Developer</a></h4>
+                <span>IAWS DevOps & Developer Productivity Blog  • MAY 2025</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/devops/accelerate-your-terraform-development-with-amazon-q-developer/">Accelerate your Terraform development with Amazon Q Developer</a></h4>
+                <span>AWS DevOps & Developer Productivity Blog • JUL 2024</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/devops/leveraging-amazon-q-developer-for-efficient-code-debugging-and-maintenance/">Leveraging Amazon Q Developer for Efficient Code Debugging and Maintenance</a></h4>
+                <span>AWS DevOps & Developer Productivity Blog • JUL 2024</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/devops/using-github-actions-with-amazon-codecatalyst/">Using GitHub Actions with Amazon CodeCatalyst</a></h4>
+                <span>AWS DevOps & Developer Productivity Blog • FEB 2023</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/devops/automate-container-anomaly-monitoring-of-amazon-elastic-kubernetes-service-clusters-with-amazon-devops-guru/">Automate Container Anomaly Monitoring of Amazon Elastic Kubernetes Service Clusters with Amazon DevOps Guru</a></h4>
+                <span>AWS DevOps & Developer Productivity Blog • DEC 2021</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/mt/how-to-easily-configure-resource-scheduler-across-your-organization-with-systems-manager-quick-setup/">How to easily configure Resource Scheduler across your Organization with Systems Manager Quick Setup</a></h4>
+                <span>AWS Cloud Operations Blog • DEC 2022</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://aws.amazon.com/blogs/mt/how-to-easily-configure-devops-guru-across-your-organization-with-systems-manager-quick-setup/">How to easily configure DevOps Guru across your organization with Systems Manager Quick Setup</a></h4>
+                <span>AWS Cloud Operations Blog • AUG 2021</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="publications-subsection">
+        <h3>AWS Prescriptive Guidance</h3>
+        <div class="pub-container">
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-multiple-stack-applications-using-aws-cdk-with-typescript.html">Deploy multiple-stack applications using AWS CDK with TypeScript</a></h4>
+                <span>This pattern provides a step-by-step approach for application deployment on Amazon Web Services (AWS) using AWS Cloud Development Kit (AWS CDK) with TypeScript. As an example, the pattern deploys a serverless real-time analytics application.
+
+The pattern builds and deploys nested stack applications. The parent AWS CloudFormation stack calls the child, or nested, stacks.  Each child stack builds and deploys the AWS resources that are defined in the CloudFormation stack. AWS CDK Toolkit, the command line interface (CLI) command cdk, is the primary interface for the CloudFormation stacks.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/automate-deployment-of-nested-applications-using-aws-sam.html">Automate deployment of nested applications using AWS SAM</a></h4>
+                <span>On Amazon Web Services (AWS), AWS Serverless Application Model (AWS SAM) is an open-source framework that provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines for each resource, you can define the application you want and model it by using YAML. During deployment, SAM transforms and expands the SAM syntax into AWS CloudFormation syntax that you can use to build serverless applications faster.
+
+AWS SAM simplifies the development, deployment, and management of serverless applications on the AWS platform. It provides a standardized framework, faster deployment, local testing capabilities, resource management, seamless Integration with Development Tools, and a supportive community. These features make it a valuable tool for building serverless applications efficiently and effectively.
+
+This pattern uses AWS SAM templates to automate the deployment of nested applications. A nested application is an application within another application. Parent applications call their child applications. These are loosely coupled components of a serverless architecture. 
+
+Using nested applications, you can rapidly build highly sophisticated serverless architectures by reusing services or components that are independently authored and maintained but are composed using AWS SAM and the Serverless Application Repository. Nested applications help you to build applications that are more powerful, avoid duplicated work, and ensure consistency and best practices across your teams and organizations. To demonstrate nested applications, the pattern deploys an example AWS serverless shopping cart application.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-the-security-automations-for-aws-waf-solution-by-using-terraform.html">Deploy the Security Automations for AWS WAF solution by using Terraform</a></h4>
+                <span>AWS WAF is a web application firewall that helps protect applications from common exploits by using customizable rules, which you define and deploy in web access control lists (ACLs). Configuring AWS WAF rules can be challenging, especially for organizations that do not have dedicated security teams. To simplify this process, Amazon Web Services (AWS) offers the Security Automations for AWS WAF solution, which automatically deploys a single web ACL with a set of AWS WAF rules that filters web-based attacks. During Terraform deployment, you can specify which protective features to include. After you deploy this solution, AWS WAF inspects web requests to existing Amazon CloudFront distributions or Application Load Balancers, and blocks any requests that don’t match the rules.
+
+The Security Automations for AWS WAF solution can be deployed by using AWS CloudFormation according to the instructions in the Security Automations for AWS WAF Implementation Guide. This pattern provides an alternative deployment option for organizations that use HashiCorp Terraform as their preferred infrastructure as code (IaC) tool to provision and manage their cloud infrastructure. When you deploy this solution, Terraform automatically applies the changes in the cloud and deploys and configures the AWS WAF settings and protective features.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/manage-on-premises-container-applications-by-setting-up-amazon-ecs-anywhere-with-the-aws-cdk.html">Manage on-premises container applications by setting up Amazon ECS Anywhere with the AWS CDK</a></h4>
+                <span>This pattern explains how you can deploy robotic process automation (RPA) bots on Amazon Elastic Compute Cloud (Amazon EC2) instances. It uses an EC2 Image Builder pipeline to create a custom Amazon Machine Image (AMI). An AMI is a preconfigured virtual machine (VM) image that contains the operating system (OS) and preinstalled software to deploy EC2 instances. This pattern uses AWS CloudFormation templates to install UiPath Studio Community edition on the custom AMI. UiPath is an RPA tool that helps you set up robots to automate your tasks.
+
+As part of this solution, EC2 Windows instances are launched by using the base AMI, and the UiPath Studio application is installed on the instances. The pattern uses the Microsoft System Preparation (Sysprep) tool to duplicate the customized Windows installation. After that, it removes the host information and creates a final AMI from the instance. You can then launch the instances on demand by using the final AMI with your own naming conventions and monitoring setup.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/set-up-uipath-rpa-bots-automatically-on-amazon-ec2-by-using-aws-cloudformation.html">Set up UiPath RPA bots automatically on Amazon EC2 by using AWS CloudFormation</a></h4>
+                <span>Amazon ECS Anywhere is an extension of the Amazon Elastic Container Service (Amazon ECS). You can use ECS Anywhere to deploy native Amazon ECS tasks in an on-premises or customer-managed environment. This feature helps reduce costs and mitigate complex local container orchestration and operations. You can use ECS Anywhere to deploy and run container applications in both on-premises and cloud environments. It removes the need for your team to learn multiple domains and skill sets, or to manage complex software on their own.
+
+This pattern demonstrates the steps to set up ECS Anywhere by using AWS Cloud Development Kit (AWS CDK) stacks.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/improve-operational-performance-by-enabling-amazon-devops-guru-across-multiple-aws-regions-accounts-and-ous-with-the-aws-cdk.html">Improve operational performance by enabling Amazon DevOps Guru across multiple AWS Regions, accounts, and OUs with the AWS CDK</a></h4>
+                <span>This pattern demonstrates the steps to enable the Amazon DevOps Guru service across multiple Amazon Web Services (AWS) Regions, accounts, and organizational units (OUs) by using the AWS Cloud Development Kit (AWS CDK) in TypeScript. You can use AWS CDK stacks to deploy AWS CloudFormation StackSets from the administrator (primary) AWS account to enable Amazon DevOps Guru across multiple accounts, instead of logging into each account and enabling DevOps Guru individually for each account.
+
+Amazon DevOps Guru provides artificial intelligence operations (AIOps) features to help you improve the availability of your applications and resolve operational issues faster. DevOps Guru reduces your manual effort by applying machine learning (ML) powered recommendations, without requiring any ML expertise. DevOps Guru analyzes your resources and operational data. If it detects any anomalies, it provides metrics, events, and recommendations to help you address the issue.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/remove-amazon-ec2-entries-in-the-same-aws-account-from-aws-managed-microsoft-ad.html">Remove Amazon EC2 entries in the same AWS account from AWS Managed Microsoft AD by using AWS Lambda automation</a></h4>
+                <span>Active Directory (AD) is a Microsoft scripting tool that manages domain information and user interactions with network services. It’s widely used among managed services providers (MSPs) to manage employee credentials and access permissions. Because AD attackers can use inactive accounts to try and hack into an organization, it’s important to find inactive accounts and disable them on a routine maintenance schedule. With AWS Directory Service for Microsoft Active Directory, you can run Microsoft Active Directory as a managed service.
+
+This pattern can help you to configure AWS Lambda automation to quickly find and remove inactive accounts. When you use this pattern, you can get the following benefits:
+
+Improve database and server performance, and fix vulnerabilities in your security from inactive accounts.
+
+If your AD server is hosted in the cloud, removing inactive accounts can also reduce storage costs while improving performance. Your monthly bills might decrease because bandwidth charges and compute resources can both drop.
+
+Keep potential attackers at bay with a clean Active Directory.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/provision-a-terraform-product-in-aws-service-catalog-by-using-a-code-repository.html">Provision a Terraform product in AWS Service Catalog by using a code repository</a></h4>
+                <span>AWS Service Catalog supports self-service provisioning with governance for your HashiCorp Terraform configurations. If you use Terraform, you can use Service Catalog as the single tool to organize, govern, and distribute your Terraform configurations within AWS at scale. You can access Service Catalog key features, including cataloging of standardized and pre-approved infrastructure as code (IaC) templates, access control, cloud resources provisioning with least privilege access, versioning, sharing to thousands of AWS accounts, and tagging. End users, such as engineers, database administrators, and data scientists, see a list of products and versions they have access to, and they can deploy them through a single action.
+
+This pattern helps you deploy AWS resources by using Terraform code. The Terraform code in the GitHub repository is accessed through Service Catalog. Using this approach, you integrate the products with your existing Terraform workflows. Administrators can create Service Catalog portfolios and add AWS Launch Wizard products to them by using Terraform.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/set-up-ci-cd-pipeline-for-db-migration-with-terraform.html">Set up a CI/CD pipeline for database migration by using Terraform</a></h4>
+                <span>This pattern is about establishing a continuous integration and continuous deployment (CI/CD) pipeline for managing database migrations in a reliable and automated manner. It covers the process of provisioning the necessary infrastructure, migrating data, and customizing schema changes by using Terraform, which is an infrastructure as code (IaC) tool.
+
+Specifically, the pattern sets up a CI/CD pipeline to migrate an on-premises Microsoft SQL Server database to Amazon Relational Database Service (Amazon RDS) on AWS. You can also use this pattern to migrate a SQL Server database that's on a virtual machine (VM) or in another cloud environment to Amazon RDS.
+
+This pattern addresses the following challenges associated with database management and deployment:
+
+Manual database deployments are time-consuming, error-prone, and lack consistency across environments.
+
+Coordinating infrastructure provisioning, data migrations, and schema changes can be complex and difficult to manage.
+
+Ensuring data integrity and minimizing downtime during database updates is crucial for production systems.
+
+This pattern provides the following benefits:
+
+Streamlines the process of updating and deploying database changes by implementing a CI/CD pipeline for database migrations. This reduces the risk of errors, ensures consistency across environments, and minimizes downtime.
+
+Helps improve reliability, efficiency, and collaboration. Enables faster time to market and reduced downtime during database updates.
+
+Helps you adopt modern DevOps practices for database management, which leads to increased agility, reliability, and efficiency in your software delivery processes.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/set-up-a-ci-cd-pipeline-for-hybrid-workloads-on-amazon-ecs-anywhere-by-using-aws-cdk-and-gitlab.html">Set up a CI/CD pipeline for hybrid workloads on Amazon ECS Anywhere by using AWS CDK and GitLab</a></h4>
+                <span>Amazon ECS Anywhere is an extension of the Amazon Elastic Container Service (Amazon ECS). It provides support for registering an external instance, such as an on-premises server or virtual machine (VM), to your Amazon ECS cluster. is feature helps reduce costs and mitigate complex local container orchestration and operations. You can use ECS Anywhere to deploy and run container applications in both on-premises and cloud environments. It removes the need for your team to learn multiple domains and skill sets, or to manage complex software on their own.
+
+This pattern describes a step-by-step approach to provision an Amazon ECS cluster with Amazon ECS Anywhere instances by using Amazon Web Services (AWS) Cloud Development Kit (AWS CDK) stacks. You then use AWS CodePipeline to set up a continuous integration and continuous deployment (CI/CD) pipeline. Then, you replicate your GitLab code repository to AWS CodeCommit and deploy your containerized application on the Amazon ECS cluster.
+
+This pattern is designed to help those who use on-premises infrastructure to run container applications and use GitLab to manage the application code base. You can manage those workloads by using AWS Cloud services, without disturbing your existing, on-premises infrastructure.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/remove-amazon-ec2-entries-across-aws-accounts-from-aws-managed-microsoft-ad.html">Remove Amazon EC2 entries across AWS accounts from AWS Managed Microsoft AD by using AWS Lambda automation</a></h4>
+                <span>Active Directory (AD) is a Microsoft scripting tool that manages domain information and user interactions with network services. It’s widely used among managed services providers (MSPs) to manage employee credentials and access permissions. Because AD attackers can use inactive accounts to try and hack into an organization, it’s important to find inactive accounts and disable them on a routine maintenance schedule. With AWS Directory Service for Microsoft Active Directory, you can run Microsoft Active Directory as a managed service. This pattern can help you to configure AWS Lambda automation to quickly find and remove inactive accounts.
+
+If the following scenarios apply to your organization, this pattern can assist you:
+
+Centralized AD management – If your organization has multiple AWS accounts, each with its own AD deployment, it can be challenging to manage user accounts and access permissions consistently across all accounts. With an across-accounts AD cleanup solution, you can disable or remove inactive accounts from all AD instances in a centralized manner.
+
+AD restructuring or migration – If your organization plans to restructure or migrate its AD deployment, an across-accounts AD cleanup solution can help you prepare the environment. The solution can help you remove unnecessary or inactive accounts, simplify the migration process, and reduce potential conflicts or issues.
+
+When you use this pattern, you can get the following benefits:
+
+Improve database and server performance, and fix vulnerabilities in your security from inactive accounts.
+
+If your AD server is hosted in the cloud, removing inactive accounts can also reduce storage costs while improving performance. Your monthly bills might decrease because bandwidth charges and compute resources can both drop.
+
+Keep potential attackers at bay with a clean Active Directory.</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="publications-subsection">
+        <h3>AWS Community Blogs</h3>
+        <div class="pub-container">
+            <div class="pub-card">
+                <h4><a href="https://builder.aws.com/content/2wzg7BVFA9zYdcZi7Lx9e4P3ymT/managing-amazon-q-cli-access-via-q-developer-pro">Managing Amazon Q CLI Access via Q Developer Pro</a></h4>
+                <span>Securely enable and restrict Amazon Q CLI access for select users using Amazon Q Developer Pro. Set fine-grained controls to ensure only authorized use.</span>
+                <span><pre>MAY 2025</pre></span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://builder.aws.com/content/2rq3I8AotcBTK0li3iaL4H8OClA/q-bits-provisioning-rds-with-terraform-and-q-developer">Q-Bits: Provisioning RDS with Terraform and Q Developer</a></h4>
+                <span>This blog post explores how Amazon Q Developer enhances Terraform workflows by providing real-time explanations, suggesting best practices, and generating code.</span>
+                <span><pre>JAN 2025</pre></span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://builder.aws.com/content/2rwleIeqtenCBXeQRLplR1RqG0M/cross-region-replication-for-elasticache-redis-in-hyderabad-using-riot">Cross-Region Replication for ElastiCache Redis in Hyderabad Using RIOT</a></h4>
+                <span>Setting up cross-region replication for Amazon ElastiCache Redis using RIOT, focusing on Hyderabad.</span>
+                <span><pre>FEB 2022</pre></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="publications-subsection">
+        <h3>Github</h3>
+        <div class="pub-container">
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/amazon-devopsguru-cdk-samples">Amazon DevOps Guru CDK Samples</a></h4>
+                <span>Amazon DevOps Guru is a machine learning (ML) powered service that gives you a simpler way to improve an application’s availability and reduce expensive downtime. Without involving any complex configuration setup, DevOps Guru automatically ingests operational data in your AWS cloud. When DevOps Guru identifies a critical issue, it automatically alerts you with a summary of related anomalies, the likely root cause, and context on when and where the issue occurred. DevOps Guru also, when possible, provides prescriptive recommendations on how to remediate the issue.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/amazon-ecs-anywhere-cdk-samples">Amazon ECS Anywhere CDK Samples</a></h4>
+                <span>Amazon ECS Anywhere enables customers to deploy native Amazon ECS tasks in on-premise or customer-managed infrastructure. It helps to reduce costs and mitigate complex local container orchestration and operations. ECS Anywhere allows you to deploy and run container applications in both on-premises and cloud environments. It removes the need for your team to learn multiple domains and skillsets and manage complex software on their own. This sample code setup ECS Anywhere service using AWS CDK stacks.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/amazon-ecs-anywhere-cicd-pipeline-cdk-sample">CI/CD Pipeline for Amazon ECS Anywhere using CDK</a></h4>
+                <span>This sample code demonstrates the step by step approach to provision ECS Anywhere cluster by using AWS Cloud Development Kit v2 (AWS CDK) stacks. Then it setup a CI/CD Pipeline using AWS CodePipeline service. Additionally, it shows how you can replicate GitLab code repository to AWS CodeCommit and deploy your containerised application on ECS Anywhere cluster.
+
+This sample code can be beneficial to the customers who are already running their container applications using on-premise infrastructure and controlling codebase using GitLab repositories, but now want to manage their workload using AWS Cloud services without disturbing and sacrificing existing on-premise infrastructure.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/aws-cloudfront-automation-terraform-samples">CloudFront update Terraform sample</a></h4>
+                <span>This AWS sample code helps to resolve one of the customer real time issues which is explained further. When customer deletes and reinstall the helm chart which is containing ingress, It recreates the Application Loadbalancer. Due to this its mapping in Amazon CloudFront will have stale record and services/application becomes unreachable.
+
+With the help of terraform templates , Lambda function will be deployed on this specific account . Based on the loadbalancer creation event, AWS Lambda will get triggered. AWS Lambda function[ python and boto3 api ] will update the Amazon CloudFront entry with latest loadbalancer DNS name.
+
+This solution helps the customers to avoid stale entry in cloudfront and reduce the manual work to update the entries after helm deployment or restart. Also this solution ensures customer will not face any latency/impact with their business process because of this implementation.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/aws-lambda-ad-cleanup-terraform-samples">Custom AD Cleanup Automation solution</a></h4>
+                <span>AWS Managed Microsoft AD is a Microsoft scripting tool that manages domain information and user interactions with network services. It’s widely used among managed services providers (MSPs) to manage employee credentials and access permissions.Since AD attackers can use inactive accounts to try and hack into an organization. It is important to find these inactive accounts and disable them on a routine maintenance schedule. This APG can quickly find inactive accounts and remove them. So that it will always keep AD secure and updated.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/aws-macie-customization-terraform-samples">Amazon Macie Organization Setup Using Terraform</a></h4>
+                <span>The Macie Organization solution will enable Amazon Macie by delegating administration to an Audit account within the Organization Management Account and configuring Macie within the delegated administrator account for all the existing and future AWS Organization accounts. Macie is also configured to send the findings to a central S3 bucket encrypted with a KMS key.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/aws-sam-nested-stack-sample">Amazon Serverless Application Model (SAM) Nested Stack Sample</a></h4>
+                <span>Amazon Serverless Application Model (SAM) is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines per resource, you can define the application you want and model it using YAML. During deployment, SAM transforms and expands the SAM syntax into AWS CloudFormation syntax, enabling you to build serverless applications faster.
+
+This code uses AWS SAM templates to automate the deployment of nested applications. A nested application is an application within another application. Parent applications call their child applications. These are loosely coupled components of a serverless architecture. Using nested applications, you can rapidly build highly sophisticated serverless architectures by reusing services or components that are independently authored and maintained but are composed using AWS SAM and the Serverless Application Repository. Nested applications help you to build applications that are more powerful, avoid duplicated work, and ensure consistency and best practices across your teams and organizations. To demonstrate nested applications, the pattern deploys a sample AWS serverless shopping cart application.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/aws-terraform-db-migration-framework-samples">Database Migration DevOps Framework using Terraform samples</a></h4>
+                <span>Database Migration framework enable customers to accelerate their database migration journey from on-prem to AWS cloud and provides automation by enforcing DevOps practices (like CI/CD Pipeline). It also provides best practices around the services used in the database migration process like Database Migration Service(DMS), Secret Management, Database Provisioning using Infrastructure as code (IaC), CI/CD automation using AMS CodeSuite. This Database Migration Deployment Framework (DMDF) provides customers an automated deployment solution to provision and migrate databases onto AWS. It replaces manual efforts and redundancy with true automation to accelerate customers cloud adoption and database migration journey using AWS database and migration services.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/aws-waf-automation-terraform-samples">AWS WAF Automation Using Terraform</a></h4>
+                <span>WAF Automation on AWS solution is developed using Terraform which automatically deploys a set of AWS WAF rules that filter common web-based attacks. Users can select from preconfigured protective features that define the rules included in an AWS WAF web access control list (web ACL). Once deployed, AWS WAF protects your Amazon CloudFront distributions or Application Load Balancers by inspecting web requests.</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/bedrock-custom-model-knowledge-base-terraform">Custom Bedrock model deployment</a></h4>
+                <span>This repository contains sample code demonstrating how to use Terraform to provision a custom model using Bedrock with a dataset which answers some common banking questions for an existing or prospective customer.
+
+The root Terraform module configuration provisions the below components into a subnet of your choice with the necessary security group attached.
+
+Amazon Bedrock
+Bedrock Custom model training job and a custom model on successful run of the training job.
+Bedrock Guardrail
+Bedrock Knowledge Base
+Bedrock Agents
+Amazon Opensearch Collection and Index
+Amazon S3
+AWS IAM</span>
+            </div>
+            <div class="pub-card">
+                <h4><a href="https://github.com/aws-samples/uipath-rpa-setup-ec2-windows-ami-cloudformation">Set up UiPath RPA bots on Amazon EC2 by using AWS CloudFormation</a></h4>
+                <span>This solution explains how you can deploy robotic process automation (RPA) bots on Amazon Elastic Compute Cloud (Amazon EC2) instances. It uses an EC2 Image Builder pipeline to create a custom Amazon Machine Image (AMI). An AMI is a preconfigured virtual machine (VM) image that contains the operating system (OS) and preinstalled software to deploy EC2 instances. This pattern uses AWS CloudFormation templates to install UiPath Studio Community edition on the custom AMI. UiPath is an RPA tool that helps you set up robots to automate your tasks.
+
+As part of this solution, EC2 Windows instances are launched by using the base AMI, and the UiPath Studio application is installed on the instances. The pattern uses the Microsoft System Preparation (Sysprep) tool to duplicate the customized Windows installation. After that, it removes the host information and creates a final AMI from the instance. You can then launch the instances on demand by using the final AMI with your own naming conventions and monitoring setup.</span>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
 <section id="education">
-<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
     <h2>Education</h2>
     <div class="education-container">
         <div class="education-card">
@@ -928,8 +1601,7 @@
 
 
 <section id="videos">
-<img src="cover.jpeg" alt="Cover" style="width:100%; display:block;">
-    <h2>Featured Talks & Sessions</h2>
+    <h2>Featured Media & Sessions</h2>
     <div class="video-container">
         
         <!-- Video 1 -->
@@ -941,9 +1613,8 @@
             <div class="description" id="desc1">
                 <p>In an era where cloud security is non-negotiable, ensuring the integrity of your AWS infrastructure is critical. In this session, we will delve into the transformative power of Sentinel policies as a robust solution for enhancing security and compliance within your Terraform deployments. By adopting Sentinel, organisations can codify their security and governance requirements, enabling automated compliance checks that align with industry best practices and regulatory mandates.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/c8k6ramUSNQ', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>Aug 2025</span>
                 <a class="watch-btn" href="https://youtu.be/c8k6ramUSNQ" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -957,9 +1628,8 @@
             <div class="description" id="desc2">
                 <p>Embracing the self-service model with Terraform Cloud and ServiceNow streamlines infrastructure provisioning, fosters collaboration, ensures governance, optimizes costs, and accelerates application delivery through seamless integration of Infrastructure as Code practices and IT service management.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/mKeXOCmQhjk', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>Aug 2025</span>
                 <a class="watch-btn" href="https://youtu.be/mKeXOCmQhjk" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -973,9 +1643,8 @@
             <div class="description" id="desc3">
                 <p>With the scale and complexity of modern architectures, building resilient and reliable infrastructure is a top challenge customers face in their cloud adoption journey. Generative AI offers a transformational approach to building resilient cloud architectures by providing failure mode and effects analysis (FMEA) , resiliency testing, catching bugs earlier in the development process, and more. In this session, learn how Amazon Q Developer helps customers built fault-tolerant infrastructure, develop custom chaos scripts, resilient infrastructure recommendations using infrastructure as code (IaC), and more, all without leaving the development environment.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/GYjBJ9sneL8', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>Aug 2025</span>
                 <a class="watch-btn" href="https://youtu.be/GYjBJ9sneL8" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -989,9 +1658,8 @@
             <div class="description" id="desc4">
                 <p>Join us for HashiTalks: India on 21 November 2024. Talks are sourced from a range of technical skill levels and backgrounds and highlight a range of unique use cases, technical talks, and demos focused on HashiCorp tools and community. Learn more here: hashi.co/hashitalks-india.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/TL4QNrDsXRM', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>July 2025</span>
                 <a class="watch-btn" href="https://youtu.be/TL4QNrDsXRM" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -1005,9 +1673,8 @@
             <div class="description" id="desc5">
                 <p>AWS and HashiCorp jointly announced the launch of a new integration between AWS Service Catalog and HashiCorp Terraform Cloud to enable large enterprises on AWS. Customers can now use Terraform Cloud and Service Catalog as a solution to organize, govern, and distribute their Terraform configurations within AWS at scale. Customers can access Service Catalog key features, including cataloging of standardized and pre-approved infrastructure-as-code templates, access control, cloud resources provisioning with least privilege access, versioning, sharing to thousands of AWS accounts, and tagging. End users such as engineers, database administrators, and data scientists simply see the list of products and versions they have access to, and can deploy them in a single action. In this session, we plan to demonstrate the integration between Terraform Cloud and AWS Service Catalog with example.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/ffJWT8XxW6Y', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>July 2025</span>
                 <a class="watch-btn" href="https://youtu.be/ffJWT8XxW6Y" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -1021,9 +1688,8 @@
             <div class="description" id="desc6">
                 <p>This session demonstrates how customers can depoly Security Automations for AWS WAF using Terraform as Infrastructure as Code (IaC). This solution automatically deploys a set of AWS WAF (web application firewall) rules that filter common web-based attacks. Users can select from preconfigured protective features that define the rules included in an AWS WAF web access control list (web ACL). Once deployed, AWS WAF protects customer Amazon CloudFront distributions or Application Load Balancers by inspecting web requests.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/CzXnsArHvKQ', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>July 2025</span>
                 <a class="watch-btn" href="https://youtu.be/CzXnsArHvKQ" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -1037,73 +1703,52 @@
             <div class="description" id="desc7">
                 <p>Join us for HashiTalks: India on 14 December 2023. Talks are sourced from a range of technical skill levels and backgrounds and highlight a range of unique use cases, technical talks, and demos focused on HashiCorp tools and community. Learn more here: hashi.co/hashitalks-india.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/OVJoimmMey4', '_blank')">Read More</button>
             <div class="bottom-section">
-                <span>July 2025</span>
                 <a class="watch-btn" href="https://youtu.be/OVJoimmMey4" target="_blank">Watch on YouTube</a>
             </div>
         </div>
 
         <!-- Video 8 -->
         <div class="video-card">
-            <img src="https://img.youtube.com/vi/b-nSH18gFQk/hqdefault.jpg" 
+            <img src="https://img.youtube.com/vi/MaxPvToGyQk/hqdefault.jpg" 
                  alt="HashiConf Session" 
-                 onclick="openModal('b-nSH18gFQk')">
-            <h3 onclick="openModal('b-nSH18gFQk')">CDK Day 2023 - Track 2 (English)</h3>
+                 onclick="openModal('MaxPvToGyQk')">
+            <h3 onclick="openModal('MaxPvToGyQk')">AWSCC documentation journey so far</h3>
             <div class="description" id="desc8">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>The Terraform AWS Cloud Control Provider (AWSCC) automatically syncs with AWS CloudFormation Registry and Cloud Control API to generate new resource schemas and handlers. The fully automated workflow in AWSCC begs the question of how the Terraform community can continue to contribute to AWSCC. In this session we show you how we add human touch to AWSCC documentation, allowing both machine and human to generate high quality documentation for the AWSCC provider. Learn about our experiment with `terraform-plugin-docs` to generate hand-crafted Terraform examples and future plan for AWSCC documentation.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/b-nSH18gFQk', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>July 2025</span>
-                <a class="watch-btn" href="https://youtu.be/b-nSH18gFQk" target="_blank">Watch on YouTube</a>
+                <a class="watch-btn" href="https://youtu.be/MaxPvToGyQk" target="_blank">Watch on YouTube</a>
             </div>
         </div>
 
         <!-- Video 9 -->
         <div class="video-card">
-            <img src="https://img.youtube.com/vi/MaxPvToGyQk/hqdefault.jpg" 
+            <img src="https://img.youtube.com/vi/iKujJWcnM3I/hqdefault.jpg" 
                  alt="HashiConf Session" 
-                 onclick="openModal('MaxPvToGyQk')">
-            <h3 onclick="openModal('MaxPvToGyQk')">AWSCC documentation journey so far</h3>
+                 onclick="openModal('iKujJWcnM3I')">
+            <h3 onclick="openModal('iKujJWcnM3I')">HashiTalks: Build (Day 1)</h3>
             <div class="description" id="desc9">
-                <p>The Terraform AWS Cloud Control Provider (AWSCC) automatically syncs with AWS CloudFormation Registry and Cloud Control API to generate new resource schemas and handlers. The fully automated workflow in AWSCC begs the question of how the Terraform community can continue to contribute to AWSCC. In this session we show you how we add human touch to AWSCC documentation, allowing both machine and human to generate high quality documentation for the AWSCC provider. Learn about our experiment with `terraform-plugin-docs` to generate hand-crafted Terraform examples and future plan for AWSCC documentation.</p>
+                <p>Join us August 9-10, 2023 for this virtual event for the HashiCorp community of programmers, developers, and builders featuring a series of talks given by practitioners that build on and for our tools and ecosystem.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/MaxPvToGyQk', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>July 2025</span>
-                <a class="watch-btn" href="https://youtu.be/MaxPvToGyQk" target="_blank">Watch on YouTube</a>
+                <a class="watch-btn" href="https://youtu.be/iKujJWcnM3I" target="_blank">Watch on YouTube</a>
             </div>
         </div>
 
         <!-- Video 10 -->
         <div class="video-card">
-            <img src="https://img.youtube.com/vi/iKujJWcnM3I/hqdefault.jpg" 
-                 alt="HashiConf Session" 
-                 onclick="openModal('iKujJWcnM3I')">
-            <h3 onclick="openModal('iKujJWcnM3I')">HashiTalks: Build (Day 1)</h3>
-            <div class="description" id="desc10">
-                <p>Join us August 9-10, 2023 for this virtual event for the HashiCorp community of programmers, developers, and builders featuring a series of talks given by practitioners that build on and for our tools and ecosystem.</p>
-            </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/iKujJWcnM3I', '_blank')">Read More</button>
-            <div class="bottom-section">
-                <span>July 2025</span>
-                <a class="watch-btn" href="https://youtu.be/iKujJWcnM3I" target="_blank">Watch on YouTube</a>
-            </div>
-        </div>
-
-        <!-- Video 11 -->
-        <div class="video-card">
             <img src="https://img.youtube.com/vi/3CuOXfuORAg/hqdefault.jpg" 
                  alt="HashiConf Session" 
                  onclick="openModal('3CuOXfuORAg')">
             <h3 onclick="openModal('3CuOXfuORAg')">FireEye & ScyllaDB: Intel Threat Analysis using a Graph Database</h3>
-            <div class="description" id="desc11">
+            <div class="description" id="desc10">
                 <p>FireEye believes in intelligence-driven cyber security. Their legacy system used PostgreSQL with a custom graph database system to store and facilitate analysis of threat intelligence data. As their user base increased they ran into scaling issues requiring a system redesign with a new platform.</p>
             </div>
-            <button class="read-more-btn" onclick="window.open('https://youtu.be/3CuOXfuORAg', '_blank')">Read More</button>
+
             <div class="bottom-section">
-                <span>July 2025</span>
                 <a class="watch-btn" href="https://youtu.be/3CuOXfuORAg" target="_blank">Watch on YouTube</a>
             </div>
         </div>
@@ -1117,6 +1762,23 @@
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
         <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Celebration Modal -->
+<div id="celebrationModal" class="modal">
+    <div class="modal-content celebration-content">
+        <div class="celebration-animation">
+            <h2>🎉 Exploring Digital Badges! 🎉</h2>
+            <p>Redirecting to Credly profile...</p>
+            <div class="celebration-emojis">
+                <span>🏆</span>
+                <span>🥇</span>
+                <span>🎖️</span>
+                <span>⭐</span>
+                <span>🚀</span>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1139,29 +1801,48 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const videoCards = document.querySelectorAll('.video-card');
-        videoCards.forEach(function(card) {
-            const desc = card.querySelector('.description p');
-            const btn = card.querySelector('.read-more-btn');
-            const img = card.querySelector('img');
-            
-            if (desc && btn) {
-                const text = desc.textContent.trim();
-                const wordCount = text.split(/\s+/).length;
-                const videoId = img.src.match(/\/vi\/([^\/]+)\//)[1];
-                
-                if (wordCount >= 30) {
-                    const truncatedText = text.split(' ').slice(0, 30).join(' ') + '...';
-                    desc.textContent = truncatedText;
+        
+        function addReadMoreFunctionality(cards) {
+            cards.forEach(function(card) {
+                const desc = card.querySelector('.description p');
+                if (desc && desc.textContent.trim().length > 0) {
+                    const lineHeight = 1.4;
+                    const maxLines = 3;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.style.position = 'absolute';
+                    tempDiv.style.visibility = 'hidden';
+                    tempDiv.style.width = desc.offsetWidth + 'px';
+                    tempDiv.style.fontSize = '0.9rem';
+                    tempDiv.style.lineHeight = lineHeight;
+                    tempDiv.textContent = desc.textContent;
+                    document.body.appendChild(tempDiv);
                     
-                    btn.onclick = function(e) {
-                        e.preventDefault();
-                        window.open(`https://youtu.be/${videoId}`, '_blank');
-                    };
-                } else {
-                    btn.style.display = 'none';
+                    const actualLines = Math.ceil(tempDiv.offsetHeight / (parseFloat(getComputedStyle(tempDiv).fontSize) * lineHeight));
+                    document.body.removeChild(tempDiv);
+                    
+                    if (actualLines >= maxLines) {
+                        desc.classList.add('summary-text');
+                        const readMoreBtn = document.createElement('button');
+                        readMoreBtn.className = 'read-more-btn';
+                        readMoreBtn.textContent = 'Read More';
+                        readMoreBtn.onclick = function() {
+                            const isExpanded = desc.classList.contains('expanded');
+                            if (isExpanded) {
+                                desc.classList.remove('expanded');
+                                this.textContent = 'Read More';
+                            } else {
+                                desc.classList.add('expanded');
+                                this.textContent = 'Read Less';
+                            }
+                        };
+                        const bottomSection = card.querySelector('.bottom-section');
+                        card.insertBefore(readMoreBtn, bottomSection);
+                    }
                 }
-            }
-        });
+            });
+        }
+        
+        addReadMoreFunctionality(videoCards);
     });
 
     // Section navigation
@@ -1205,6 +1886,101 @@
             closeModal();
         }
     }
+
+    function toggleReadMore(button) {
+        const summaryText = button.previousElementSibling;
+        const isExpanded = summaryText.classList.contains('expanded');
+        
+        if (isExpanded) {
+            summaryText.classList.remove('expanded');
+            button.textContent = 'Read More';
+        } else {
+            summaryText.classList.add('expanded');
+            button.textContent = 'Read Less';
+        }
+    }
+
+    function openBadgesModal() {
+        document.getElementById("celebrationModal").style.display = "flex";
+        setTimeout(() => {
+            window.open("https://www.credly.com/users/rahul-gaikwad", "_blank");
+            document.getElementById("celebrationModal").style.display = "none";
+        }, 2000);
+    }
+
+    // Handle AWS Prescriptive Guidance and GitHub span elements
+    document.addEventListener('DOMContentLoaded', function() {
+        const prescriptiveCards = document.querySelectorAll('#publications .publications-subsection:nth-child(3) .pub-card');
+        const githubCards = document.querySelectorAll('#publications .publications-subsection:nth-child(5) .pub-card');
+        
+        function addReadMoreFunctionality(cards) {
+            cards.forEach(function(card) {
+                const span = card.querySelector('span');
+                if (span && span.textContent.trim().length > 0) {
+                    const lineHeight = 1.4;
+                    const maxLines = 3;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.style.position = 'absolute';
+                    tempDiv.style.visibility = 'hidden';
+                    tempDiv.style.width = span.offsetWidth + 'px';
+                    tempDiv.style.fontSize = '0.85rem';
+                    tempDiv.style.lineHeight = lineHeight;
+                    tempDiv.textContent = span.textContent;
+                    document.body.appendChild(tempDiv);
+                    
+                    const actualLines = Math.ceil(tempDiv.offsetHeight / (parseFloat(getComputedStyle(tempDiv).fontSize) * lineHeight));
+                    document.body.removeChild(tempDiv);
+                    
+                    if (actualLines >= maxLines) {
+                        span.classList.add('summary-text');
+                        const readMoreBtn = document.createElement('button');
+                        readMoreBtn.className = 'read-more-btn';
+                        readMoreBtn.textContent = 'Read More';
+                        readMoreBtn.onclick = function() {
+                            const isExpanded = span.classList.contains('expanded');
+                            if (isExpanded) {
+                                span.classList.remove('expanded');
+                                this.textContent = 'Read More';
+                            } else {
+                                span.classList.add('expanded');
+                                this.textContent = 'Read Less';
+                            }
+                        };
+                        card.appendChild(readMoreBtn);
+                    }
+                }
+            });
+        }
+        
+        addReadMoreFunctionality(prescriptiveCards);
+        addReadMoreFunctionality(githubCards);
+    });
+
+    // Welcome Screen functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        let autoHideTimer;
+        
+        // Auto-hide after 3 seconds
+        autoHideTimer = setTimeout(() => {
+            welcomeScreen.style.opacity = '0';
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+            }, 500);
+        }, 3000);
+        
+        // Hide on click or scroll
+        function hideWelcome() {
+            clearTimeout(autoHideTimer);
+            welcomeScreen.style.opacity = '0';
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+            }, 500);
+        }
+        
+        welcomeScreen.addEventListener('click', hideWelcome);
+        window.addEventListener('scroll', hideWelcome);
+    });
 </script>
 
 
