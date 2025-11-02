@@ -23,22 +23,43 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 10%;
+        padding: 1rem 5%;
         position: sticky;
         top: 0;
         background: #fff;
         z-index: 100;
+        flex-wrap: wrap;
     }
     nav a {
         text-decoration: none;
         color: #333;
-        margin-left: 20px;
-        font-weight: 500;
+        margin-left: 1rem;
+        font-size: 1.05rem;
+        transition: color 0.3s;
+    }
+    nav a:hover {
+        color: #6C63FF;
     }
     nav .logo {
         font-weight: 600;
         font-size: 1.2rem;
         color: #6C63FF;
+    }
+    .nav-links {
+        display: flex;
+    }
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        margin: 3px 0;
+        transition: 0.3s;
     }
 
     /* Hero Section */
@@ -46,21 +67,23 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px 5%;
-        margin: 5px 5px 20px 0px;
-        gap: 10px;
+        padding: 1rem 5%;
+        margin: 0;
+        gap: 2rem;
+        flex-wrap: wrap;
     }
     .hero-text {
-        flex: 0.85;
+        flex: 1;
+        min-width: 300px;
     }
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
         font-weight: 700;
     }
     .hero-text p {
-        margin: 15px 0;
+        margin: 1rem 0;
         color: #6c757d;
-        font-size: 1rem;
+        font-size: clamp(0.9rem, 2vw, 1rem);
         line-height: 1.5;
     }
     .location {
@@ -80,11 +103,20 @@
         align-items: center;
         gap: 15px;
     }
+    .company span {
+        font-size: 1.5rem;
+        color: #666;
+        font-weight: 300;
+    }
 
     .company img {
-        width: 70px;
-        height: 70px;
+        width: clamp(50px, 8vw, 70px);
+        height: clamp(50px, 8vw, 70px);
         object-fit: contain;
+    }
+    .company img:first-of-type {
+        width: clamp(35px, 6vw, 50px);
+        height: clamp(35px, 6vw, 50px);
     }
 
     /* Social icons */
@@ -133,10 +165,11 @@
         background: #fff;
         border-radius: 15px;
         box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
-        padding: 20px;
-        margin-top: 50px;
-        max-width: 1500px;
+        padding: clamp(1rem, 3vw, 2rem);
+        margin-top: 2rem;
+        max-width: 100%;
         border: 2px solid #6C63FF;
+        min-width: 300px;
     }
     .profile-card h2 {
         margin-top: 0;
@@ -158,8 +191,8 @@
     /* Awards & Achievements */
     .awards-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
+        gap: 1.5rem;
     }
     .awards-card {
         background: #fff;
@@ -178,7 +211,6 @@
     }
     .awards-thumbnail {
         width: 120px;
-        height: 120px;
         flex-shrink: 0;
         background: #f0f0f0;
         display: flex;
@@ -189,7 +221,8 @@
     .awards-thumbnail img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        cursor: pointer;
     }
     .awards-content {
         padding: 20px;
@@ -254,9 +287,9 @@
     }
     .work-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        gap: 20px;
-        margin-left: 60px;
+        grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+        gap: 1.5rem;
+        margin-left: clamp(0px, 8vw, 60px);
     }
     #volunteer .work-container {
         margin-left: 0;
@@ -269,6 +302,22 @@
         margin-top:5px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    #work .work-card img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+    #work .work-card-content {
+        flex: 1;
+    }
+    #volunteer .work-card {
+        display: block;
+        padding: 20px;
     }
     .work-card:hover {
         transform: translateY(-3px);
@@ -325,10 +374,9 @@
 
     /*Education*/
     .education-container {
-        display: -ms-grid;
-        grid-template-columns: 2;
-        grid
-        gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+        gap: 1.5rem;
     }
     .education-card {
         background: #fff;
@@ -399,8 +447,8 @@
     }
     .pp-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+        gap: 1.5rem;
     }
     .pp-card {
         background: #f9f9f9;
@@ -450,30 +498,99 @@
     
     /* Section styling */
     section {
-        padding: 10px 5% 80px 5%;
-        min-height: 80vh;
+        padding: 2rem 5% 4rem 5%;
+        min-height: auto;
     }
     section:nth-child(even) {
         background: #f9f9f9;
     }
 
-    @media (max-width: 900px) {
+    /* Mobile Styles */
+    @media (max-width: 480px) {
+        nav {
+            padding: 1rem 3%;
+            flex-direction: row;
+        }
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            flex-direction: column;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .nav-links a {
+            margin: 0;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        .hamburger {
+            display: flex;
+        }
         .hero {
             flex-direction: column;
             text-align: center;
+            padding: 1rem 3%;
+            gap: 1rem;
         }
-        .profile-card {
-            max-width: 100%;
+        .buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        .buttons a {
+            width: 100%;
+            text-align: center;
+            max-width: 200px;
+        }
+        .awards-container {
+            grid-template-columns: 1fr;
+        }
+        .awards-card {
+            flex-direction: column;
+        }
+        .work-container {
+            grid-template-columns: 1fr;
+            margin-left: 0;
+        }
+        .timeline {
+            display: none !important;
+        }
+        section {
+            padding: 1rem 3% 2rem 3%;
+        }
+    }
+    
+    /* Tablet Styles */
+    @media (max-width: 768px) and (min-width: 481px) {
+        .hero {
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
         }
         .buttons {
             justify-content: center;
         }
-        nav {
-            flex-direction: column;
-            gap: 15px;
+        .work-container {
+            margin-left: 0;
         }
-        .location {
-            justify-content: center;
+        .timeline {
+            display: none !important;
+        }
+    }
+    
+    /* Large Tablet/Small Desktop */
+    @media (max-width: 1024px) and (min-width: 769px) {
+        .hero {
+            gap: 1.5rem;
+        }
+        .work-container {
+            margin-left: 2rem;
         }
     }
 
@@ -548,8 +665,8 @@
 
 .video-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    gap: 2rem 1.5rem;
 }
 
 .video-card {
@@ -721,8 +838,8 @@
 }
 .pub-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 1rem;
 }
 /* AWS Blogs Cards */
 .publications-subsection:nth-child(2) .pub-card {
@@ -982,6 +1099,39 @@
     color: #000;
 }
 
+/* Code Table Styles */
+.code-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.code-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+.code-row:hover {
+    background: #fff;
+}
+.code-title {
+    flex: 1;
+    font-weight: 500;
+    color: #333;
+}
+.code-link a {
+    color: #6C63FF;
+    text-decoration: none;
+    font-weight: 500;
+}
+.code-link a:hover {
+    text-decoration: underline;
+}
+
 /* Celebration Modal */
 .celebration-content {
     background: linear-gradient(135deg, #6C63FF, #9C88FF);
@@ -1048,25 +1198,35 @@
 
 <nav>
     <div class="logo"></div>
-        <div>
-            <a href="#">About</a>
-            <a href="#work">Work</a>
-            <a href="#volunteer">Volunteer</a>
-            <a href="#awards">Awards</a>
-            <a href="#research">Research</a>
-            <a href="#publications">Publications</a>
-            <a href="#codesamples">Code Samples</a>
-            <a href="#education">Education</a>
-            <a href="#videos">Media</a>
-        </div>
+    <div class="hamburger" onclick="toggleNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="nav-links">
+        <a href="#">About</a>
+        <a href="#work">Work</a>
+        <a href="#volunteer">Volunteer</a>
+        <a href="#awards">Awards</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#codesamples">Code Samples</a>
+        <a href="#education">Education</a>
+        <a href="#videos">Media</a>
+    </div>
 </nav>
 
-<img src="cover-hashicorp.jpg" alt="Cover" style="width:100%; height:450px; object-fit:cover; display:block;">
+<div style="position:relative; width:100%; height:450px; display:block; cursor:pointer;" onclick="openImageModal('cover-hashicorp.jpg')">
+    <img src="cover-hashicorp.jpg" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.2);"></div>
+</div>
 <section class="hero" id="home">
     <div class="hero-text">
         <h1>Dr. Rahul Gaikwad</h1>
         <p>HashiCorp-IBM | Ex-AWS | Field CTO | PhD | MCA | eMBA | MA | 11xAWS | 3xHashiCorp | AI/ML | GenAI | Award Winner | Author | HashiCorp Ambassador | Speaker | Mentor | Trainer | Researcher | YouTuber | Adjunct Professor</p>
         <div class="company">
+            <img src="https://cdn.freebiesupply.com/logos/large/2x/hashicorp-logo-png-transparent.png" alt="hashicorp logo">
+            <span>|</span>
             <img src="https://cdn.freebiesupply.com/images/large/2x/ibm-logo-transparent.png" alt="ibm logo">
         </div>
         <div class="location">📍Pune, Maharashtra, India</div>
@@ -1098,93 +1258,114 @@
     <div class="work-container"></div>
 
     <div class="work-card">
-            <h3><u><a href= "https://www.linkedin.com/company/ibm/posts/?feedView=all">IBM</a></u></h3>
-            <div class="role">
-                <h4>Staff Resident Solutions Architect</h4>
-                <span>2025 – Present</span>
-                <p>Driving large-scale cloud migration and modernization initiatives with zero downtime, while optimizing security, reliability, and costs (up to <strong>30%</strong> savings). Conducting Well-Architected Reviews, workshops, and trainings on AI/ML, GenAI, and DevOps. Authored blogs, prescriptive guidance, OSS repos, and hands-on workshops reaching <strong>100K+</strong> professionals worldwide. Delivered <strong>25+</strong> global talks and <strong>20+</strong> videos, amplifying AWS adoption and community impact.</p>
+            <img src="https://cdn.freebiesupply.com/images/large/2x/ibm-logo-transparent.png" alt="IBM Logo">
+            <div class="work-card-content">
+                <h3><u><a href= "https://www.linkedin.com/company/ibm/posts/?feedView=all">IBM</a></u></h3>
+                <div class="role">
+                    <h4>Staff Resident Solutions Architect</h4>
+                    <span>Oct 2025 – Present</span>
+                    <p>As a Staff Resident Solutions Architect at IBM, I collaborate with enterprise leaders across APAC to drive cloud transformation using the HashiCorp product suite. My work focuses on enabling the Cloud Operating Model by providing strategic and technical guidance, designing multi-cloud adoption frameworks, and redefining cloud consumption models. I help organizations enhance developer velocity, governance, and compliance, while collaborating with professional services teams to deliver tailored transformation initiatives in automation, observability, and system administration. Through customer enablement and education, I support businesses in operationalizing the Cloud Operating Model to achieve meaningful outcomes.</p>
+                </div>
             </div>
         </div>
 
 
         <div class="work-card">
-            <h3><u><a href= "https://www.linkedin.com/company/amazon-web-services/posts/?feedView=all">Amazon Web services</a></u></h3>
-            <div class="role">
-                <h4>Solutions Architect</h4>
-                <span>2024 – 2025</span>
-                <p>Partnering with enterprise CxOs and leadership teams across APAC to define and accelerate their cloud transformation journey using the HashiCorp product suite. Providing strategic and technical guidance across people, processes, and workflows aligned with the Cloud Operating Model. Contributing to the design and implementation of a multi-cloud adoption framework and redefining cloud consumption models based on the HashiCorp Tao of Workflows. Communicating and demonstrating the business value and technical capabilities of HashiCorp solutions to both executive and practitioner audiences. Helping organizations increase developer velocity while maintaining governance, risk, and compliance standards. Collaborating with professional services teams to deliver customer-specific transformation initiatives and best practices in automation, observability, and system administration. Educating and enabling customers to adopt and operationalize the Cloud Operating Model to drive measurable business outcomes.</p>
-            </div>
-            <div class="role">
-                <h4>Lead Consultant - DevOps</h4>
-                <span>2021 – 2024</span>
-                <p>Spearheaded Chaos Engineering and resiliency initiatives, improving system reliability by <strong>80%</strong> and reducing outages by <strong>65%</strong>. Led enterprise-scale infrastructure transformation, deploying <strong>100+</strong> servers, <strong>1000+</strong> security rules, and migrating <strong>500+</strong> VMs from VMware to AWS EC2—cutting costs by <strong>40%</strong> and reducing carbon footprint by <strong>35%</strong>. Optimized AMI creation, observability, and security architectures, while mentoring team members and driving cross-functional architectural discussions.</p>
-            </div>
-            <div class="role">
-                <h4>Consultant - DevOps</h4>
-                <span>2020 – 2021</span>
-                <p>Led end-to-end DevOps automation, building CI/CD pipelines with Jenkins, Ansible, Puppet, and Terraform, while implementing monitoring with DataDog. Migrated applications and databases to AWS, boosting scalability and reliability. Designed IaC frameworks, embedded automated security checks, and optimized infrastructure to improve efficiency, security posture, and team productivity.</p>
+            <img src="amazon_web_services_logo.jpeg" alt="AWS Logo">
+            <div class="work-card-content">
+                <h3><u><a href= "https://www.linkedin.com/company/amazon-web-services/posts/?feedView=all">Amazon Web services</a></u> · 5 yrs 2 mos</h3>
+                <div class="role">
+                    <h4>Solutions Architect · 1 yr 2 mos</h4>
+                    <span>Aug 2024 – Sep 2025</span>
+                    <p>Partnering with enterprise CxOs and leadership teams across APAC to define and accelerate their cloud transformation journey using the HashiCorp product suite. Providing strategic and technical guidance across people, processes, and workflows aligned with the Cloud Operating Model. Contributing to the design and implementation of a multi-cloud adoption framework and redefining cloud consumption models based on the HashiCorp Tao of Workflows. Communicating and demonstrating the business value and technical capabilities of HashiCorp solutions to both executive and practitioner audiences. Helping organizations increase developer velocity while maintaining governance, risk, and compliance standards. Collaborating with professional services teams to deliver customer-specific transformation initiatives and best practices in automation, observability, and system administration. Educating and enabling customers to adopt and operationalize the Cloud Operating Model to drive measurable business outcomes.</p>
+                </div>
+                <div class="role">
+                    <h4>Lead Consultant - DevOps · 2 yrs 9 mos</h4>
+                    <span>Dec 2021 – Aug 2024</span>
+                    <p>Spearheaded Chaos Engineering and resiliency initiatives, improving system reliability by <strong>80%</strong> and reducing outages by <strong>65%</strong>. Led enterprise-scale infrastructure transformation, deploying <strong>100+</strong> servers, <strong>1000+</strong> security rules, and migrating <strong>500+</strong> VMs from VMware to AWS EC2—cutting costs by <strong>40%</strong> and reducing carbon footprint by <strong>35%</strong>. Optimized AMI creation, observability, and security architectures, while mentoring team members and driving cross-functional architectural discussions.</p>
+                </div>
+                <div class="role">
+                    <h4>Consultant - DevOps · 1 yr 4 mos</h4>
+                    <span>Aug 2020 – Nov 2021</span>
+                    <p>Led end-to-end DevOps automation, building CI/CD pipelines with Jenkins, Ansible, Puppet, and Terraform, while implementing monitoring with DataDog. Migrated applications and databases to AWS, boosting scalability and reliability. Designed IaC frameworks, embedded automated security checks, and optimized infrastructure to improve efficiency, security posture, and team productivity.</p>
+                </div>
             </div>
         </div>
 
 
 
         <div class="work-card">
-            <h3><u><a href = "https://www.linkedin.com/company/fireeye/">FireEye, Inc</a></u></h3>
-            <div class="role">
-                <h4>Staff DevOps Engineer</h4>
-                <span>2019 – 2020</span>
-                <p>Led end-to-end DevOps automation, achieving <strong>100%</strong> CI/CD pipeline automation with Jenkins, Ansible, Puppet, and Terraform. Migrated all on-prem apps and databases to AWS, improving scalability and reliability while cutting costs by <strong>30%</strong>. Built IaC frameworks, containerized workloads with Docker & Kubernetes, and embedded automated security, reducing provisioning time by <strong>60%</strong> and incident response times by <strong>40%</strong>.</p>
-            </div>
-            <div class="role">
-                <h4>Senior DevOps Engineer</h4>
-                <span>2017 – 2018</span>
-                <p>Collaborated as a key team member across the product lifecycle, implementing DevOps automation with Ansible, Jenkins, Puppet, Terraform, Docker, and Kubernetes. Designed and managed scalable AWS infrastructure (EC2, S3, VPC, Redshift, IAM, Lambda) and administered diverse databases including RDS, DynamoDB, MySQL, MongoDB, and Elasticsearch. Built Big Data ecosystems with Cloudera/Hortonworks and ensured resilience through advanced disaster recovery solutions, while proactively monitoring with CloudWatch, DataDog, and Nagios.</p>
-            </div>
-            <div class="role">
-                <h4>Senior Big Data Administrator</h4>
-                <span>2016 – 2017</span>
-                <p>Led and mentored DBA teams while architecting scalable and secure database solutions with strong data modeling and schema design. Administered diverse databases including Cassandra, MongoDB, HBase, Elasticsearch, and MariaDB, ensuring high availability and performance. Optimized database operations through best practices, migrations, and change control policies, strengthening both reliability and compliance.</p>
+            <img src="fireeye_logo.jpg" alt="FireEye Logo">
+            <div class="work-card-content">
+                <h3><u><a href = "https://www.linkedin.com/company/fireeye/">FireEye, Inc</a></u> · 4 yrs</h3>
+                <div class="role">
+                    <h4>Staff DevOps Engineer · 1 yr 8 mos</h4>
+                    <span>Jan 2019 – Aug 2020</span>
+                    <p>Led end-to-end DevOps automation, achieving <strong>100%</strong> CI/CD pipeline automation with Jenkins, Ansible, Puppet, and Terraform. Migrated all on-prem apps and databases to AWS, improving scalability and reliability while cutting costs by <strong>30%</strong>. Built IaC frameworks, containerized workloads with Docker & Kubernetes, and embedded automated security, reducing provisioning time by <strong>60%</strong> and incident response times by <strong>40%</strong>.</p>
+                </div>
+                <div class="role">
+                    <h4>Senior DevOps Engineer · 1 yr 3 mos</h4>
+                    <span>Oct 2017 – Dec 2018</span>
+                    <p>Collaborated as a key team member across the product lifecycle, implementing DevOps automation with Ansible, Jenkins, Puppet, Terraform, Docker, and Kubernetes. Designed and managed scalable AWS infrastructure (EC2, S3, VPC, Redshift, IAM, Lambda) and administered diverse databases including RDS, DynamoDB, MySQL, MongoDB, and Elasticsearch. Built Big Data ecosystems with Cloudera/Hortonworks and ensured resilience through advanced disaster recovery solutions, while proactively monitoring with CloudWatch, DataDog, and Nagios.</p>
+                </div>
+                <div class="role">
+                    <h4>Senior Big Data Administrator · 1 yr 1 mo</h4>
+                    <span>Sep 2016 – Sep 2017</span>
+                    <p>Led and mentored DBA teams while architecting scalable and secure database solutions with strong data modeling and schema design. Administered diverse databases including Cassandra, MongoDB, HBase, Elasticsearch, and MariaDB, ensuring high availability and performance. Optimized database operations through best practices, migrations, and change control policies, strengthening both reliability and compliance.</p>
+                </div>
             </div>
         </div>
      
         <div class="work-card">
-            <h3><u><a href="https://www.linkedin.com/company/opustechnologies/">Opus Consulting Solutions</a></u></h3>
-            <div class="role">
-                <h4>Technical Lead- Big Data Hadoop</h4>
-                <span>2015 – 2016</span>
-                <p>Led large-scale Hadoop cluster deployments on AWS and on-prem, ensuring high availability, security, and performance. Built ETL pipelines integrating semi-structured/unstructured data from RDBMS and NoSQL sources, with transformations in Python and ingestion into Hadoop ecosystems. Strengthened security with SSL, AWS policies, and Apache Ranger, while optimizing Hive queries, automating workflows, and managing backup, recovery, and cluster stability.</p>
+            <img src="opusconsultingsolutions_logo.jpg" alt="Opus Logo">
+            <div class="work-card-content">
+                <h3><u><a href="https://www.linkedin.com/company/opustechnologies/">Opus Consulting Solutions</a></u> · 1 yr</h3>
+                <div class="role">
+                    <h4>Technical Lead- Big Data Hadoop</h4>
+                    <span>Oct 2015 – Sep 2016</span>
+                    <p>Led large-scale Hadoop cluster deployments on AWS and on-prem, ensuring high availability, security, and performance. Built ETL pipelines integrating semi-structured/unstructured data from RDBMS and NoSQL sources, with transformations in Python and ingestion into Hadoop ecosystems. Strengthened security with SSL, AWS policies, and Apache Ranger, while optimizing Hive queries, automating workflows, and managing backup, recovery, and cluster stability.</p>
+                </div>
             </div>
         </div>
 
         <div class="work-card">
-            <h3><u><a href="https://www.linkedin.com/company/ibm/posts/?feedView=all">IBM India Private Limited</a></u></h3>
-            <div class="role">
-                <h4>Senior Database Administrator</h4>
-                <span>2015</span>
-                <p>Managed Oracle E-Business Suite 11i environments, ensuring smooth operations, data migration, and system reliability. Automated health checks, optimized storage with Oracle ASM, and supported replication with Oracle GoldenGate. Streamlined deployments and monitored performance to resolve issues proactively.</p>
+            <img src="https://cdn.freebiesupply.com/images/large/2x/ibm-logo-transparent.png" alt="IBM Logo">
+            <div class="work-card-content">
+                <h3><u><a href="https://www.linkedin.com/company/ibm/posts/?feedView=all">IBM India Private Limited</a></u> · 6 mos</h3>
+                <div class="role">
+                    <h4>Senior Database Administrator</h4>
+                    <span>May 2015 - Oct 2015</span>
+                    <p>Managed Oracle E-Business Suite 11i environments, ensuring smooth operations, data migration, and system reliability. Automated health checks, optimized storage with Oracle ASM, and supported replication with Oracle GoldenGate. Streamlined deployments and monitored performance to resolve issues proactively.</p>
+                </div>
             </div>
         </div>
 
         <div class="work-card">
-            <h3><u><a href = "https://www.linkedin.com/company/kpit/">KPIT Technologies Ltd</a></u></h3>
-            <div class="role">
-                <h4>Big Data Hadoop Administrator</h4>
-                <span>2013 - 2015</span>
-                <p>Implemented and administered Hadoop clusters across Ubuntu and other OS, ensuring performance, scalability, and reliability. Managed core Hadoop ecosystem components (HBase, Hive, Pig, Oozie, ZooKeeper, Sqoop, Flume) and provided robust HDFS support with backup, failover, and disaster recovery. Automated operational tasks with shell scripts and ensured 24/7 support for critical Big Data environments.</p>
-            </div>
-            <div class="role">
-                <h4>Oracle Apps DBA</h4>
-                <span>2011 - 2015</span>
-                <p>Administered Oracle E-Business Suite 11i/R12 with expertise in patching, performance tuning, and concurrent manager administration. Skilled in Oracle utilities (FNDCPASS, FNDLOAD, ADPATCH, etc.), Autoconfig, and workflow mailer troubleshooting. Proficient in Oracle Database 10g/11g with Unix shell scripting for automation and system integration.</p>
+            <img src="kpit_logo.jpg" alt="KPIT Logo">
+            <div class="work-card-content">
+                <h3><u><a href = "https://www.linkedin.com/company/kpit/">KPIT Technologies Ltd</a></u> · 4 yrs 1 mo</h3>
+                <div class="role">
+                    <h4>Big Data Hadoop Administrator · 1 yr 7 mos</h4>
+                    <span>Nov 2013 - May 2015</span>
+                    <p>Implemented and administered Hadoop clusters across Ubuntu and other OS, ensuring performance, scalability, and reliability. Managed core Hadoop ecosystem components (HBase, Hive, Pig, Oozie, ZooKeeper, Sqoop, Flume) and provided robust HDFS support with backup, failover, and disaster recovery. Automated operational tasks with shell scripts and ensured 24/7 support for critical Big Data environments.</p>
+                </div>
+                <div class="role">
+                    <h4>Oracle Apps DBA · 4 yrs 1 mo</h4>
+                    <span>May 2011 - May 2015</span>
+                    <p>Administered Oracle E-Business Suite 11i/R12 with expertise in patching, performance tuning, and concurrent manager administration. Skilled in Oracle utilities (FNDCPASS, FNDLOAD, ADPATCH, etc.), Autoconfig, and workflow mailer troubleshooting. Proficient in Oracle Database 10g/11g with Unix shell scripting for automation and system integration.</p>
+                </div>
             </div>
         </div>
         
         <div class="work-card">
-            <h3>Gaikwad Classes</h3>
-            <div class="role">
-                <h4>Founder</h4>
-                <span>2004 - 2008</span>
-                <p>I founded and managed my own part-time coaching classes for students in grades 5 through 12, including those in the Science stream.</p>
+            <img src="loading.jpg" alt="Gaikwad Classes Logo">
+            <div class="work-card-content">
+                <h3>Gaikwad Classes · 4 yrs 6 mos</h3>
+                <div class="role">
+                    <h4>Founder</h4>
+                    <span>2004 - June 2008</span>
+                    <p>I founded and managed my own part-time coaching classes for students in grades 5 through 12, including those in the Science stream.</p>
+                </div>
             </div>
         </div>
 
@@ -1197,56 +1378,304 @@
     
     <div class="research-subsection">
         <h3>Public Speaker</h3>
-        <div class="pp-container">
-            <div class="pp-card">
-                <h4>Speaker at</h4>
-                <p>AWS re:Invent, HashiConf, HashiTalks, IIT Bombay, CDK Day, Community Days, and various technology conferences worldwide. Delivered various technical sessions and workshops on cloud computing, infrastructure as code, DevOps, AI/ML, and emerging technologies to audiences.</p>
-            </div>
-        </div>
+        <h4>Speaker at</h4>
+        <p>AWS re:Invent, HashiConf, HashiTalks, IIT Bombay, CDK Day, AWS Community Day, Student Community Day, AWS TFC Summit Week (TSW), SyllaDB Summit, Cloud Native Day, and various technology conferences worldwide. Delivered impactful sessions and hands-on workshops on Cloud Computing, Infrastructure as Code, DevOps, AI/ML, and Emerging Technologies, engaging diverse audiences across student and professional communities.</p>
     </div>
     
     <div class="work-container">
         <div class="work-card">
-            <h3><u><a href="https://www.linkedin.com/company/hashicorp/posts/?feedView=all">HashiCorp</a></u></h3>
+            <h3>Amazon</h3>
             <div class="role">
-                <h4>HashiCorp Ambassador</h4>
-                <span>2024 – Present</span>
-                <p>Recognized as one of 108 global HashiCorp Ambassadors, representing APJ in 2024. Delivered talks at HashiConf and HashiTalks: India, reaching 1,000+ practitioners on Terraform automation and cloud security. Authored 20+ blogs and guides, contributed open-source modules to Terraform AWS and Cloud Control providers adopted by global users, and mentored 500+ professionals and students through workshops and community programs.</p>
-            </div>
-        </div>
-        
-
-        <div class="work-card">
-            <h3>MES Garware College of Commerce</h3>
-            <div class="role">
-                <h4>Industry Expert Member on Board of Studies(BoS)</h4>
-                <span>2024 – Present</span>
-                <p>Contribute and guide as an Industry Expert Member on the Board of Studies (BoS) of Information and Communication Technology (ICT, MES Garware College of Commerce (Autonomous)).</p>
+                <h4>Research Proposal Reviewer</h4>
+                <span>Jan 2025</span>
             </div>
         </div>
 
         <div class="work-card">
-            <h3>Sanjivani College of Engineering</h3>
+            <h3>Indian Institute of Technology, Bombay</h3>
             <div class="role">
-                <h4>Adjunct Professor</h4>
-                <span>2023 – Present</span>
-                <p>Outside of work, volunteer as Adjunct Professor to educate and share IT experience to rural engineering students.</p>
+                <h4>Professional Speaker</h4>
+                <span>Dec 2023</span>
             </div>
         </div>
 
         <div class="work-card">
-            <h3>C-DAC PACE Authorised DOT-COM Computer Training Centre</h3>
+            <h3>Barclays</h3>
+            <div class="role">
+                <h4>Volunteer Staff</h4>
+                <span>Jun 2024</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Amazon</h3>
+            <div class="role">
+                <h4>Volunteer</h4>
+                <span>May 2024</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Vellore Institute of Technology</h3>
+            <div class="role">
+                <h4>Professional Speaker</h4>
+                <span>Feb 2024</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Indian Institute of Technology, Bombay</h3>
             <div class="role">
                 <h4>Technical Trainer</h4>
-                <span>2003 - 2004</span>
+                <span>Dec 2023</span>
             </div>
         </div>
 
         <div class="work-card">
-            <h3>Aptech Computer Education</h3>
+            <h3>Cloud Native Day Pune</h3>
             <div class="role">
-                <h4>Faculty Member</h4>
-                <span>2002 - 2003</span>
+                <h4>Panel Member</h4>
+                <span>Oct 2023</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>CDK Day</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Aug 2023 - Sep 2023</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Sanjivani College of Engineering kopargaon</h3>
+            <div class="role">
+                <h4>Adjunct Professor</h4>
+                <span>Sep 2023 - Present</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>AWS Community Day Pune</h3>
+            <div class="role">
+                <h4>Public Speaker</h4>
+                <span>Oct 2023</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>AWS User Group Pune</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Sep 2023</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>PES Modern College of Engineering</h3>
+            <div class="role">
+                <h4>External Examiner</h4>
+                <span>Jun 2023</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>MES' Institute of Management & Career Courses (IMCC)</h3>
+            <div class="role">
+                <h4>Guest Lecturer</h4>
+                <span>Jun 2020 - Dec 2022</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Amazon Web Services (AWS)</h3>
+            <div class="role">
+                <h4>Pod Leader</h4>
+                <span>Aug 2022 - Present</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Amazon Web Services (AWS)</h3>
+            <div class="role">
+                <h4>TFC Mentor</h4>
+                <span>Jan 2022 - Present</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Amazon Web Services (AWS)</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Nov 2022 - Dec 2022</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Open Education Conference</h3>
+            <div class="role">
+                <h4>Proposal Reviewer</h4>
+                <span>Jun 2022 - Jul 2022</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Open Education Conference</h3>
+            <div class="role">
+                <h4>Reviewer</h4>
+                <span>May 2021 - Aug 2021</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Elsevier</h3>
+            <div class="role">
+                <h4>Advisory Panel</h4>
+                <span>Jan 2021 - Present</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>SPARC</h3>
+            <div class="role">
+                <h4>Reviewer</h4>
+                <span>Aug 2020 - Sep 2020</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Elsevier</h3>
+            <div class="role">
+                <h4>Advisory Committee Member</h4>
+                <span>Apr 2020 - Jul 2020</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Savitribai Phule Pune University</h3>
+            <div class="role">
+                <h4>Curriculum Designer</h4>
+                <span>Apr 2020 - Jun 2020</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Rajarambapu Institute of Technology, Sangli</h3>
+            <div class="role">
+                <h4>Guest Lecturer</h4>
+                <span>Jun 2020</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Shivaji University</h3>
+            <div class="role">
+                <h4>Curriculum Designer</h4>
+                <span>Apr 2014 - Jun 2014</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Amazon Web Services (AWS)</h3>
+            <div class="role">
+                <h4>Cohort Leader</h4>
+                <span>Jan 2023 - Mar 2023</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Amazon Web Services (AWS)</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Oct 2022</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>ScyllaDB</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Nov 2019</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Sipna College of Engineering & Technology, Amravati</h3>
+            <div class="role">
+                <h4>Guest Speaker</h4>
+                <span>May 2015</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Government College of Engineering, Amravati.</h3>
+            <div class="role">
+                <h4>Guest Speaker</h4>
+                <span>May 2014</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>ASM Group of Institutes</h3>
+            <div class="role">
+                <h4>Guest Speaker</h4>
+                <span>Apr 2013</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Indira college of engineering and management, Pune</h3>
+            <div class="role">
+                <h4>Guest Speaker</h4>
+                <span>Mar 2013</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>ASM Technologies Ltd</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Mar 2017</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>ASM Technologies Ltd</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Mar 2016</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>MES' Institute of Management & Career Courses (IMCC)</h3>
+            <div class="role">
+                <h4>Speaker</h4>
+                <span>Apr 2021</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Institute of Scholars</h3>
+            <div class="role">
+                <h4>Reviewer</h4>
+                <span>Jan 2023 - Present</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Indira College of Engineering and Management, Pune (MBA)</h3>
+            <div class="role">
+                <h4>Research Paper Reviewer</h4>
+                <span>Mar 2025 - Apr 2025</span>
+            </div>
+        </div>
+
+        <div class="work-card">
+            <h3>Open Education Conference</h3>
+            <div class="role">
+                <h4>Proposal Reviewer</h4>
+                <span>Mar 2025</span>
             </div>
         </div>
     </div>
@@ -1256,7 +1685,7 @@
     <h2>Awards & Achievements</h2>
     <div class="awards-container">
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/aibcf.com" alt="AIBCF"></div>
+            <div class="awards-thumbnail"><img src="man of excellence.jpg" alt="Man of Excellence" onclick="openImageModal('man of excellence.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.aibcf.com/dr-rahul-gaikwad/">Man of Excellence</a></h3>
                 <p>Honoured by AIBCF for distinguished contributions in technology, research, and community leadership. Recognized as a trailblazer across domains including cloud computing, AI/ML, and DevOps — combining over 15 years of industry expertise with academic contributions and mentorship.</p>
@@ -1264,7 +1693,7 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/hashicorp.com" alt="HashiCorp"></div>
+            <div class="awards-thumbnail"><img src="hashicorp ambassador.jpg" alt="HashiCorp Ambassador" onclick="openImageModal('hashicorp ambassador.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.hashicorp.com/en/ambassador/directory?q=Dr.%20Rahul">HashiCorp Ambassador</a></h3>
                 <p>Recognized as a HashiCorp Ambassador in India for thought leadership and expertise in Terraform, Vault, Consul, Waypoint, and the HashiCorp Cloud Platform. This honor highlights contributions as a community advocate, mentor, and technical voice promoting modern infrastructure practices and open-source adoption across developer and operations communities.</p>
@@ -1272,7 +1701,7 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/iafindia.com" alt="Indian Achievers Forum"></div>
+            <div class="awards-thumbnail"><img src="india acheivers award.jpg" alt="Indian Achievers Award" onclick="openImageModal('india acheivers award.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.iafindia.com/dr-rahul-gaikwad/">Indian Achievers</a></h3>
             <p>Honoured by the Indian Achievers’ Forum for outstanding contributions to technology and research, with impactful work spanning Cloud, DevOps, and AIOps. This recognition highlights leadership, innovation, and consistent efforts in bridging industry and academia.</p>
@@ -1280,7 +1709,7 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/hashicorp.com" alt="HashiCorp"></div>
+            <div class="awards-thumbnail"><img src="hashicorp ambassador.jpg" alt="HashiCorp Ambassador" onclick="openImageModal('hashicorp ambassador.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.hashicorp.com/en/ambassador/directory?q=Dr.%20Rahul">HashiCorp Ambassador</a></h3>
                 <p>Recognized as one of 108 global HashiCorp Ambassadors, representing APJ in 2024. Delivered talks at HashiConf and HashiTalks: India, reaching 1,000+ practitioners on Terraform automation and cloud security. Authored 20+ blogs and guides, contributed open-source modules to Terraform AWS and Cloud Control providers adopted by global users, and mentored 500+ professionals and students through workshops and community programs.</p>
@@ -1288,7 +1717,6 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/mypunepulse.com" alt="Pune Pulse"></div>
             <div class="awards-content">
                 <h3><a href="https://www.mypunepulse.com/pune-dr-rahul-sharad-gaikwad-has-won-best-phd-thesis-award/">Best PhD Thesis</a></h3>
             <p>Honoured with the “Best PhD Thesis Award” by the Prestige Institute of Management & Research, Gwalior, recognizing groundbreaking research in Artificial Intelligence in IT Operations (AIOps) presented at the 15th International Conference on “Fostering Industry–Academia Partnership for Driving Innovation and Strategizing Trade and Industry.”.</p>
@@ -1296,7 +1724,6 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Research Award"></div>
             <div class="awards-content">
                 <h3><a href="https://www.asiaeducationconclave.com/">Research Scholar of Year Award in IT</a></h3>
                 <p>Awarded by Global Asia Education at the Asia Education Conclave, this honour recognises outstanding achievement in IT research, particularly for pioneering work in AIOps and a strong record of academic excellence. The award was conferred at a Bangalore ceremony attended by distinguished educators and researchers.</p>
@@ -1304,7 +1731,7 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/amazon.com" alt="AWS"></div>
+            <div class="awards-thumbnail"><img src="inspiration award.jpg" alt="Inspiration Award" onclick="openImageModal('inspiration award.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.linkedin.com/posts/dr-rahul-gaikwad_aws-tfc-gcci-activity-7030525724440543232-RbZR?utm_source=share&utm_medium=member_desktop&rcm=ACoAADlbbqwBURy054KT61oIoiRTs9E8dRHE3zE">Inspiration Award</a></h3>
                 <p>Received the prestigious Inspiration Award from AWS for leading and inspiring the highest number of aspiring builders through community engagement. This milestone highlights a commitment to mentorship, positivity, and creating impact within the global cloud community.</p>
@@ -1312,7 +1739,6 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/insc.in" alt="Institute of Scholars"></div>
             <div class="awards-content">
                 <h3><a href="https://www.insc.in/awards/singleinfo.php?tid=7844">Young Researcher Award</a></h3>
                 <p>Honoured with the Young Researcher Award by the Institute of Scholars for notable contributions to research in Artificial Intelligence in IT Operations (AIOps). The award recognises innovative approaches, impactful findings, and dedication to advancing knowledge and best practices in the technology and research community.</p>
@@ -1320,7 +1746,6 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/theknowledgereview.com" alt="Knowledge Review"></div>
             <div class="awards-content">
                 <h3><a href="https://www.linkedin.com/company/the-academic-insights/">Featured in The Knowledge Review Magazines</a></h3>
             <p>Highlighted in The Knowledge Review Magazine as part of their “Best Medical Institutes in India: Admiring Health Care 2023” edition, recognising contributions to advancing healthcare education and fostering innovation within the medical community. This feature underscores a commitment to excellence and leadership in the field.</p>
@@ -1328,7 +1753,6 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/theacademicinsights.com" alt="Academic Insights"></div>
             <div class="awards-content">
                 <h3><a href="https://theacademicinsights.com/India-s-Top-50-Engineering-Colleges-Survey-2023/#page=48">Featured in The Academic Insights Magazine</a></h3>
             <p>Recognised in The Academic Insights Magazine as part of their “India’s Top 50 Engineering Colleges Survey 2023,” highlighting contributions to advancing engineering education and fostering innovation within the academic community. This feature underscores a commitment to excellence and leadership in the field.</p>
@@ -1336,7 +1760,7 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/scylladb.com" alt="ScyllaDB"></div>
+            <div class="awards-thumbnail"><img src="best sylladb user award.jpeg" alt="Best Scylla User Award" onclick="openImageModal('best sylladb user award.jpeg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.scylladb.com/2019/08/29/scylla-university-challenge-winners/#:~:text=Rahul%20S.%20Gaikwad,hands-on%20knowledge.%E2%80%9D">Top 5 winner in ScyllaDB Challenge</a></h3>
                 <p>Ranked among the top 5 in the ScyllaDB University Challenge, a global competition recognising hands-on expertise in NoSQL databases. This achievement highlights proficiency in ScyllaDB, demonstrating its advantages over traditional NoSQL systems like Cassandra. The challenge underscored a commitment to mastering scalable, high-performance database solutions.</p>
@@ -1344,7 +1768,7 @@
             </div>
         </div>
         <div class="awards-card">
-            <div class="awards-thumbnail"><img src="https://logo.clearbit.com/scylladb.com" alt="ScyllaDB"></div>
+            <div class="awards-thumbnail"><img src="best sylladb user award.jpeg" alt="Best Scylla User Award" onclick="openImageModal('best sylladb user award.jpeg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.scylladb.com/2019/11/06/winners-of-the-scylla-summit-2019-user-awards/#:~:text=Best%20Use%20of%20Scylla%20with%20a,roughly%2010X%20faster%20than%20other%20options.">The Best Scylla User Award</a></h3>
                 <p>Awarded at the ScyllaDB Summit 2019 for innovative application of ScyllaDB's single-table design, demonstrating its efficiency and scalability. This recognition underscores a commitment to leveraging ScyllaDB's capabilities to achieve high performance and simplicity in data modeling. The approach highlighted was particularly effective in scenarios requiring rapid data access and minimal latency.</p>
@@ -1599,65 +2023,50 @@ Keep potential attackers at bay with a clean Active Directory.</span>
 <section id="codesamples">
     <h2>Code Samples</h2>
     
-    <div class="pub-container">
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/amazon-devopsguru-cdk-samples">Amazon DevOps Guru CDK Samples</a></h4>
-            <span>Amazon DevOps Guru is a machine learning (ML) powered service that gives you a simpler way to improve an application's availability and reduce expensive downtime. Without involving any complex configuration setup, DevOps Guru automatically ingests operational data in your AWS cloud...</span>
+    <div class="code-table">
+        <div class="code-row">
+            <div class="code-title">Amazon DevOps Guru CDK Samples</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/amazon-devopsguru-cdk-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/amazon-ecs-anywhere-cdk-samples">Amazon ECS Anywhere CDK Samples</a></h4>
-            <span>Amazon ECS Anywhere enables customers to deploy native Amazon ECS tasks in on-premise or customer-managed infrastructure. It helps to reduce costs and mitigate complex local container orchestration and operations...</span>
+        <div class="code-row">
+            <div class="code-title">Amazon ECS Anywhere CDK Samples</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/amazon-ecs-anywhere-cdk-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/amazon-ecs-anywhere-cicd-pipeline-cdk-sample">CI/CD Pipeline for Amazon ECS Anywhere using CDK</a></h4>
-            <span>This sample code demonstrates the step by step approach to provision ECS Anywhere cluster by using AWS Cloud Development Kit v2 (AWS CDK) stacks. Then it setup a CI/CD Pipeline using AWS CodePipeline service...</span>
+        <div class="code-row">
+            <div class="code-title">CI/CD Pipeline for Amazon ECS Anywhere using CDK</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/amazon-ecs-anywhere-cicd-pipeline-cdk-sample" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/aws-cloudfront-automation-terraform-samples">CloudFront update Terraform sample</a></h4>
-            <span>This AWS sample code helps to resolve one of the customer real time issues which is explained further. When customer deletes and reinstall the helm chart which is containing ingress, It recreates the Application Loadbalancer...</span>
+        <div class="code-row">
+            <div class="code-title">CloudFront update Terraform sample</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/aws-cloudfront-automation-terraform-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/aws-lambda-ad-cleanup-terraform-samples">Custom AD Cleanup Automation solution</a></h4>
-            <span>AWS Managed Microsoft AD is a Microsoft scripting tool that manages domain information and user interactions with network services. It's widely used among managed services providers (MSPs) to manage employee credentials and access permissions...</span>
+        <div class="code-row">
+            <div class="code-title">Custom AD Cleanup Automation solution</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/aws-lambda-ad-cleanup-terraform-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/aws-macie-customization-terraform-samples">Amazon Macie Organization Setup Using Terraform</a></h4>
-            <span>The Macie Organization solution will enable Amazon Macie by delegating administration to an Audit account within the Organization Management Account and configuring Macie within the delegated administrator account for all the existing and future AWS Organization accounts. Macie is also configured to send the findings to a central S3 bucket encrypted with a KMS key.</span>
+        <div class="code-row">
+            <div class="code-title">Amazon Macie Organization Setup Using Terraform</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/aws-macie-customization-terraform-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/aws-sam-nested-stack-sample">Amazon Serverless Application Model (SAM) Nested Stack Sample</a></h4>
-            <span>Amazon Serverless Application Model (SAM) is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines per resource, you can define the application you want and model it using YAML. During deployment, SAM transforms and expands the SAM syntax into AWS CloudFormation syntax, enabling you to build serverless applications faster.
-
-This code uses AWS SAM templates to automate the deployment of nested applications. A nested application is an application within another application. Parent applications call their child applications. These are loosely coupled components of a serverless architecture. Using nested applications, you can rapidly build highly sophisticated serverless architectures by reusing services or components that are independently authored and maintained but are composed using AWS SAM and the Serverless Application Repository. Nested applications help you to build applications that are more powerful, avoid duplicated work, and ensure consistency and best practices across your teams and organizations. To demonstrate nested applications, the pattern deploys a sample AWS serverless shopping cart application.</span>
+        <div class="code-row">
+            <div class="code-title">Amazon Serverless Application Model (SAM) Nested Stack Sample</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/aws-sam-nested-stack-sample" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/aws-terraform-db-migration-framework-samples">Database Migration DevOps Framework using Terraform samples</a></h4>
-            <span>Database Migration framework enable customers to accelerate their database migration journey from on-prem to AWS cloud and provides automation by enforcing DevOps practices (like CI/CD Pipeline). It also provides best practices around the services used in the database migration process like Database Migration Service(DMS), Secret Management, Database Provisioning using Infrastructure as code (IaC), CI/CD automation using AMS CodeSuite. This Database Migration Deployment Framework (DMDF) provides customers an automated deployment solution to provision and migrate databases onto AWS. It replaces manual efforts and redundancy with true automation to accelerate customers cloud adoption and database migration journey using AWS database and migration services.</span>
+        <div class="code-row">
+            <div class="code-title">Database Migration DevOps Framework using Terraform samples</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/aws-terraform-db-migration-framework-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/aws-waf-automation-terraform-samples">AWS WAF Automation Using Terraform</a></h4>
-            <span>WAF Automation on AWS solution is developed using Terraform which automatically deploys a set of AWS WAF rules that filter common web-based attacks. Users can select from preconfigured protective features that define the rules included in an AWS WAF web access control list (web ACL). Once deployed, AWS WAF protects your Amazon CloudFront distributions or Application Load Balancers by inspecting web requests.</span>
+        <div class="code-row">
+            <div class="code-title">AWS WAF Automation Using Terraform</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/aws-waf-automation-terraform-samples" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/bedrock-custom-model-knowledge-base-terraform">Custom Bedrock model deployment</a></h4>
-            <span>This repository contains sample code demonstrating how to use Terraform to provision a custom model using Bedrock with a dataset which answers some common banking questions for an existing or prospective customer.
-
-The root Terraform module configuration provisions the below components into a subnet of your choice with the necessary security group attached.
-
-Amazon Bedrock
-Bedrock Custom model training job and a custom model on successful run of the training job.
-Bedrock Guardrail
-Bedrock Knowledge Base
-Bedrock Agents
-Amazon Opensearch Collection and Index
-Amazon S3
-AWS IAM</span>
+        <div class="code-row">
+            <div class="code-title">Custom Bedrock model deployment</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/bedrock-custom-model-knowledge-base-terraform" target="_blank">Check on GitHub ↗</a></div>
         </div>
-        <div class="pub-card">
-            <h4><a href="https://github.com/aws-samples/uipath-rpa-setup-ec2-windows-ami-cloudformation">Set up UiPath RPA bots on Amazon EC2 by using AWS CloudFormation</a></h4>
-            <span>This solution explains how you can deploy robotic process automation (RPA) bots on Amazon Elastic Compute Cloud (Amazon EC2) instances. It uses an EC2 Image Builder pipeline to create a custom Amazon Machine Image (AMI). An AMI is a preconfigured virtual machine (VM) image that contains the operating system (OS) and preinstalled software to deploy EC2 instances. This pattern uses AWS CloudFormation templates to install UiPath Studio Community edition on the custom AMI. UiPath is an RPA tool that helps you set up robots to automate your tasks.
-
-As part of this solution, EC2 Windows instances are launched by using the base AMI, and the UiPath Studio application is installed on the instances. The pattern uses the Microsoft System Preparation (Sysprep) tool to duplicate the customized Windows installation. After that, it removes the host information and creates a final AMI from the instance. You can then launch the instances on demand by using the final AMI with your own naming conventions and monitoring setup.</span>
+        <div class="code-row">
+            <div class="code-title">Set up UiPath RPA bots on Amazon EC2 by using AWS CloudFormation</div>
+            <div class="code-link"><a href="https://github.com/aws-samples/uipath-rpa-setup-ec2-windows-ami-cloudformation" target="_blank">Check on GitHub ↗</a></div>
         </div>
     </div>
 </section>
@@ -1668,7 +2077,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="sppu.jpg" alt="SPPU Logo">
             <div>
-                <h3>Doctor of Philosophy - PhD, Machine Learning, AIOps</h3>
+                <h3>Doctor of Philosophy - PhD</h3>
+                <p>speacialization-<b>Machine Learning, AIOps</b></p>
                 <p>Savitribai Phule Pune University</p>
                 <span>2018 - 2022</span>
             </div>
@@ -1676,7 +2086,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="NIBM.png" alt="NIBM Logo">
             <div>
-                <h3>Executive MBA, Project Management</h3>
+                <h3>Executive MBA</h3>
+                <p>speacialization-<b>Project Management</b></p>
                 <p>NIBM Institute</p>
                 <span>2013 – 2014</span>
             </div>
@@ -1684,7 +2095,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="shivaji_university_logo.jpeg" alt="Shivaji University Logo">
             <div>
-                <h3>MCA (Engg), Computer Applications</h3>
+                <h3>MCA (Engg)</h3>
+                <p>speacialization-<b>Computer Applications</b></p>
                 <p>Shivaji University</p>
                 <span>2008 – 2011</span>
             </div>
@@ -1692,7 +2104,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="sppu.jpg" alt="SPPU Logo">
             <div>
-                <h3>Master of Arts (M.A.) Part I, History</h3>
+                <h3>Master of Arts (M.A.) Part I</h3>
+                <p>speacialization-<b>History</b></p>
                 <p>Savitribai Phule Pune University</p>
                 <span>2007 – 2008</span>
             </div>
@@ -1700,7 +2113,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="sppu.jpg" alt="SPPU Logo">
             <div>
-                <h3>Bachelor of Arts - BA, History</h3>
+                <h3>Bachelor of Arts - BA</h3>
+                <p>speacialization-<b>History</b></p>
                 <p>Savitribai Phule Pune University</p>
                 <span>2003 – 2007</span>
             </div>
@@ -1708,7 +2122,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="loading.jpg" alt="APTECH Logo">
             <div>
-                <h3>Diploma In Computer Software (DCS), Computer Programming</h3>
+                <h3>Diploma</h3>
+                <p>speacialization-<b>Computer Software (DCS), Computer Programming</b></p>
                 <p>APTECH Computer Education</p>
                 <span>2001 – 2002</span>
             </div>
@@ -1716,7 +2131,8 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         <div class="education-card">
             <img src="IGNOU.jpeg" alt="IGNOU Logo">
             <div>
-                <h3>Post Graduate Diploma in Financial Management (PGDFM), Finance and Financial Management Services</h3>
+                <h3>Post Graduate Diploma</h3>
+                <p>speacialization-<b>Financial Management (PGDFM) & Finance and Financial Management Services</b></p>
                 <p>Indira Gandhi National Open University</p>
                 <span>March 2023</span>
             </div>
@@ -1734,7 +2150,7 @@ As part of this solution, EC2 Windows instances are launched by using the base A
             <img src="https://img.youtube.com/vi/PtUx4jLG954/hqdefault.jpg" 
                  alt="HashiTalks: India" 
                  onclick="openModal('PtUx4jLG954')">
-            <h3 onclick="openModal('PtUx4jLG954')">HashiTalks: India</h3>
+            <h3 onclick="openModal('PtUx4jLG954')">Terraform actions: Revolutionozing infrastructure lifecycle with smarter automation | HashiTalks: India</h3>
             <div class="bottom-section">
                 <a class="watch-btn" href="https://youtu.be/PtUx4jLG954" target="_blank">Watch on YouTube</a>
             </div>
@@ -1873,6 +2289,14 @@ As part of this solution, EC2 Windows instances are launched by using the base A
     </div>
 </div>
 
+<!-- Image Modal -->
+<div id="imageModal" class="modal">
+    <span class="close" onclick="closeImageModal()">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Award Image" style="width:100%; max-width:600px; border-radius:10px;">
+    </div>
+</div>
+
 <!-- Celebration Modal -->
 <div id="celebrationModal" class="modal">
     <div class="modal-content celebration-content">
@@ -1905,6 +2329,16 @@ As part of this solution, EC2 Windows instances are launched by using the base A
     function closeModal() {
         document.getElementById("videoModal").style.display = "none";
         document.getElementById("videoFrame").src = "";
+    }
+
+    function openImageModal(imageSrc) {
+        document.getElementById("imageModal").style.display = "flex";
+        document.getElementById("modalImage").src = imageSrc;
+    }
+
+    function closeImageModal() {
+        document.getElementById("imageModal").style.display = "none";
+        document.getElementById("modalImage").src = "";
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1968,26 +2402,43 @@ As part of this solution, EC2 Windows instances are launched by using the base A
             const sectionTop = workSection.offsetTop;
             const sectionHeight = workSection.offsetHeight;
             
-            if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+            if (scrollY >= sectionTop - 200 && scrollY <= sectionTop + sectionHeight + 200) {
                 timeline.style.display = 'block';
                 
-                // Find current year range based on scroll position
-                let currentYearRange = '2024';
-                workCards.forEach(card => {
-                    const cardTop = card.offsetTop + sectionTop;
-                    if (scrollY >= cardTop - 100) {
-                        const spans = card.querySelectorAll('.role span');
-                        if (spans.length > 0) {
-                            const yearText = spans[0].textContent;
-                            const match = yearText.match(/(\d{4})/g);
-                            if (match && match.length >= 2) {
-                                currentYearRange = `${match[0]} - ${match[1]}`;
-                            } else if (match && match.length === 1) {
-                                currentYearRange = match[0];
-                            }
-                        }
+                let currentYearRange = '2025';
+                let closestCard = null;
+                let minDistance = Infinity;
+                
+                workCards.forEach((card) => {
+                    const cardTop = card.offsetTop;
+                    const cardCenter = cardTop + card.offsetHeight / 2;
+                    const viewportCenter = scrollY + window.innerHeight / 2;
+                    const distance = Math.abs(cardCenter - viewportCenter);
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestCard = card;
                     }
                 });
+                
+                if (closestCard) {
+                    const spans = closestCard.querySelectorAll('.role span');
+                    let allYears = [];
+                    
+                    spans.forEach(span => {
+                        const yearText = span.textContent;
+                        const match = yearText.match(/(\d{4})/g);
+                        if (match) {
+                            allYears = allYears.concat(match.map(Number));
+                        }
+                    });
+                    
+                    if (allYears.length > 0) {
+                        const minYear = Math.min(...allYears);
+                        const maxYear = Math.max(...allYears);
+                        currentYearRange = minYear === maxYear ? minYear.toString() : `${minYear} - ${maxYear}`;
+                    }
+                }
                 
                 timelineYear.textContent = currentYearRange;
             } else {
@@ -2004,17 +2455,32 @@ As part of this solution, EC2 Windows instances are launched by using the base A
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
         const sections = document.querySelectorAll('section');
         const heroSection = document.querySelector('.hero');
-        const coverImage = document.querySelector('img[src="cover-hashicorp.jpg"]');
+        const coverImage = document.querySelector('div[onclick="openImageModal(\'cover-hashicorp.jpg\')"]');
         
-        // Initially hide all sections except about (hero and cover)
+        // Check for saved section or URL hash
+        const savedSection = localStorage.getItem('currentSection') || window.location.hash.substring(1) || '';
+        
+        // Initially hide all sections
         sections.forEach(section => section.style.display = 'none');
-        if (heroSection) heroSection.style.display = 'flex';
-        if (coverImage) coverImage.style.display = 'block';
+        if (heroSection) heroSection.style.display = 'none';
+        if (coverImage) coverImage.style.display = 'none';
+        
+        // Show saved/current section or default to about
+        if (savedSection && document.getElementById(savedSection)) {
+            document.getElementById(savedSection).style.display = 'block';
+            if (coverImage) coverImage.style.display = 'none';
+        } else {
+            if (heroSection) heroSection.style.display = 'flex';
+            if (coverImage) coverImage.style.display = 'block';
+        }
         
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
+                
+                        // Save current section
+                localStorage.setItem('currentSection', targetId);
                 
                 // Hide all sections and hero
                 sections.forEach(section => section.style.display = 'none');
@@ -2025,19 +2491,25 @@ As part of this solution, EC2 Windows instances are launched by using the base A
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.style.display = 'block';
+                    if (coverImage) coverImage.style.display = 'none';
                 } else if (targetId === '' || targetId === 'home') {
                     // Show hero and cover for home
                     if (heroSection) heroSection.style.display = 'flex';
                     if (coverImage) coverImage.style.display = 'block';
+                    localStorage.setItem('currentSection', '');
                 }
             });
         });
     });
 
     window.onclick = function(event) {
-        const modal = document.getElementById("videoModal");
-        if (event.target === modal) {
+        const videoModal = document.getElementById("videoModal");
+        const imageModal = document.getElementById("imageModal");
+        if (event.target === videoModal) {
             closeModal();
+        }
+        if (event.target === imageModal) {
+            closeImageModal();
         }
     }
 
@@ -2060,6 +2532,11 @@ As part of this solution, EC2 Windows instances are launched by using the base A
             window.open("https://www.credly.com/users/rahul-gaikwad", "_blank");
             document.getElementById("celebrationModal").style.display = "none";
         }, 2000);
+    }
+
+    function toggleNav() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
     }
 
     // Handle AWS Prescriptive Guidance and GitHub span elements
