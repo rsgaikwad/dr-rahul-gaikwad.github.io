@@ -1216,9 +1216,9 @@
     </div>
 </nav>
 
-<div id="coverImage" style="position:relative; width:100%; height:450px; display:none; cursor:pointer; overflow:hidden;" onclick="openImageModal('cover-collage.png')">
-    <img id="coverImg" src="cover-collage.png" alt="Cover" style="width:150%; height:100%; object-fit:cover; transition:transform 0.3s ease;">
-    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.2); pointer-events:none;"></div>
+<div id="coverImage" style="position:relative; width:100%; height:450px; display:none; cursor:pointer;" onclick="openImageModal('cover-collage.png')">
+    <img src="cover-collage.png" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.2);"></div>
 </div>
 <section class="hero" id="home">
     <div class="hero-text">
@@ -2599,50 +2599,30 @@ Keep potential attackers at bay with a clean Active Directory.</span>
         addReadMoreFunctionality(codeSamplesCards);
     });
 
-    // Cover image swipe functionality
+    // Welcome Screen functionality
     document.addEventListener('DOMContentLoaded', function() {
-        const coverImage = document.getElementById('coverImage');
-        const coverImg = document.getElementById('coverImg');
-        let startX = 0;
-        let currentX = 0;
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        let autoHideTimer;
         
-        if (coverImage && coverImg) {
-            coverImage.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-            });
-            
-            coverImage.addEventListener('touchmove', function(e) {
-                e.preventDefault();
-                currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                const maxMove = coverImg.offsetWidth - coverImage.offsetWidth;
-                const movePercent = Math.max(0, Math.min(100, (diffX / coverImage.offsetWidth) * 100));
-                coverImg.style.transform = `translateX(-${movePercent}%)`;
-            });
-        }
-    });
-    
-    // Cover image swipe functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const coverImage = document.getElementById('coverImage');
-        const coverImg = document.getElementById('coverImg');
-        let startX = 0;
-        let currentX = 0;
+        // Auto-hide after 3 seconds
+        autoHideTimer = setTimeout(() => {
+            welcomeScreen.style.opacity = '0';
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+            }, 500);
+        }, 3000);
         
-        if (coverImage && coverImg) {
-            coverImage.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-            });
-            
-            coverImage.addEventListener('touchmove', function(e) {
-                e.preventDefault();
-                currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                const maxMove = coverImg.offsetWidth - coverImage.offsetWidth;
-                const movePercent = Math.max(0, Math.min(100, (diffX / coverImage.offsetWidth) * 100));
-                coverImg.style.transform = `translateX(-${movePercent}%)`;
-            });
+        // Hide on click or scroll
+        function hideWelcome() {
+            clearTimeout(autoHideTimer);
+            welcomeScreen.style.opacity = '0';
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+            }, 500);
         }
+        
+        welcomeScreen.addEventListener('click', hideWelcome);
+        window.addEventListener('scroll', hideWelcome);
     });
 </script>
 
