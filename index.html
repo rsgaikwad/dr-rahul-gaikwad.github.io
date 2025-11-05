@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HCDDT19XR5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HCDDT19XR5');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rahul Gaikwad Portfolio</title>
@@ -1225,8 +1216,8 @@
     </div>
 </nav>
 
-<div style="position:relative; width:100%; height:450px; display:block; cursor:pointer;" onclick="openImageModal('cover-hashicorp.jpg')">
-    <img src="cover-hashicorp.jpg" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
+<div id="coverImage" style="position:relative; width:100%; height:450px; display:none; cursor:pointer;" onclick="openImageModal('cover-collage.png')">
+    <img src="cover-collage.png" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
     <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.2);"></div>
 </div>
 <section class="hero" id="home">
@@ -1726,6 +1717,7 @@
             </div>
         </div>
         <div class="awards-card">
+                        <div class="awards-thumbnail"><img src="phd award.jpg" alt="Best PhD Thesis Award" onclick="openImageModal('phd award.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.mypunepulse.com/pune-dr-rahul-sharad-gaikwad-has-won-best-phd-thesis-award/">Best PhD Thesis</a></h3>
             <p>Honoured with the “Best PhD Thesis Award” by the Prestige Institute of Management & Research, Gwalior, recognizing groundbreaking research in Artificial Intelligence in IT Operations (AIOps) presented at the 15th International Conference on “Fostering Industry–Academia Partnership for Driving Innovation and Strategizing Trade and Industry.”.</p>
@@ -1733,6 +1725,7 @@
             </div>
         </div>
         <div class="awards-card">
+            <div class="awards-thumbnail"><img src="awards.jpg" alt="Research Scholar Award" onclick="openImageModal('research scholar of year award.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.asiaeducationconclave.com/">Research Scholar of Year Award in IT</a></h3>
                 <p>Awarded by Global Asia Education at the Asia Education Conclave, this honour recognises outstanding achievement in IT research, particularly for pioneering work in AIOps and a strong record of academic excellence. The award was conferred at a Bangalore ceremony attended by distinguished educators and researchers.</p>
@@ -1748,6 +1741,7 @@
             </div>
         </div>
         <div class="awards-card">
+            <div class="awards-thumbnail"><img src="young research award.jpg" alt="Young Researcher Award" onclick="openImageModal('young researcher award.jpg')"></div>
             <div class="awards-content">
                 <h3><a href="https://www.insc.in/awards/singleinfo.php?tid=7844">Young Researcher Award</a></h3>
                 <p>Honoured with the Young Researcher Award by the Institute of Scholars for notable contributions to research in Artificial Intelligence in IT Operations (AIOps). The award recognises innovative approaches, impactful findings, and dedication to advancing knowledge and best practices in the technology and research community.</p>
@@ -2464,7 +2458,7 @@ Keep potential attackers at bay with a clean Active Directory.</span>
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
         const sections = document.querySelectorAll('section');
         const heroSection = document.querySelector('.hero');
-        const coverImage = document.querySelector('div[onclick="openImageModal(\'cover-hashicorp.jpg\')"]');
+        const coverImage = document.getElementById('coverImage');
         
         // Check for saved section or URL hash
         const savedSection = localStorage.getItem('currentSection') || window.location.hash.substring(1) || '';
@@ -2488,6 +2482,12 @@ Keep potential attackers at bay with a clean Active Directory.</span>
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 
+                // Close mobile menu
+                const navLinksContainer = document.querySelector('.nav-links');
+                if (navLinksContainer) {
+                    navLinksContainer.classList.remove('active');
+                }
+                
                         // Save current section
                 localStorage.setItem('currentSection', targetId);
                 
@@ -2500,9 +2500,10 @@ Keep potential attackers at bay with a clean Active Directory.</span>
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.style.display = 'block';
+                    // Cover image only shows on About page, hide for all other sections
                     if (coverImage) coverImage.style.display = 'none';
                 } else if (targetId === '' || targetId === 'home') {
-                    // Show hero and cover for home
+                    // Show hero and cover for About page only
                     if (heroSection) heroSection.style.display = 'flex';
                     if (coverImage) coverImage.style.display = 'block';
                     localStorage.setItem('currentSection', '');
@@ -2629,4 +2630,3 @@ Keep potential attackers at bay with a clean Active Directory.</span>
 
 </body>
 </html>
-
